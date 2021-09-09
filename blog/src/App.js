@@ -1,15 +1,24 @@
 /* eslint-disable */
-
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import logo from './logo.svg';
 
 function App() {
   let [title, setTitle] = useState(['글제목', '오늘 축구', '이기자']);
-  let [num, setNum] = useState(0);
+  let [num, setNum] = useState([0, 2, 0]);
   let [modal, setModal] = useState(false);
-  const up = () => {
-    setNum(num + 1);
+
+  let array = [2, 3, 4];
+
+  let aw = array.map(function (a) {
+    return a * 2;
+  });
+
+  const up = (index) => {
+    let numArray = [...num];
+    numArray[index]++;
+
+    setNum(numArray);
   };
 
   const onChange = () => {
@@ -20,7 +29,8 @@ function App() {
 
   let click = () => {
     console.log('나오니??');
-    modal === true ? setModal(false) : setModal(true);
+    // modal === true ? setModal(false) : setModal(true);
+    setModal(!modal);
   };
 
   return (
@@ -29,25 +39,19 @@ function App() {
         <div>개발 Blog</div>
       </div>
       <button onClick={onChange}>교체</button>
-      <div className="list">
-        <h3>
-          {' '}
-          {title[0]} <span onClick={up}>👍</span> {num}{' '}
-        </h3>
 
-        <p>날짜</p>
-        <hr style={{ border: 'solid' }} />
-      </div>
-      <div className="list">
-        <h3> {title[1]} </h3>
-        <p>날짜</p>
-        <hr style={{ border: 'solid' }} />
-      </div>
-      <div className="list">
-        <h3 onClick={click}> {title[2]} </h3>
-        <p>날짜</p>
-        <hr style={{ border: 'solid' }} />
-      </div>
+      {title.map(function (a, index) {
+        return (
+          <div className="list">
+            <h3 onClick={click}>
+              {' '}
+              {a} <span onClick={() => up(index)}>👍{num[index]}</span>
+            </h3>
+            <p>날짜</p>
+            <hr style={{ border: 'solid' }} />
+          </div>
+        );
+      })}
 
       {modal === true ? <Modal></Modal> : null}
     </div>
