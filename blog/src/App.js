@@ -4,17 +4,21 @@ import './App.css';
 import logo from './logo.svg';
 
 function App() {
-  let [title, setTitle] = useState(['글제목', '오늘 축구', '이기자']);
-  let [num, setNum] = useState([0, 2, 0]);
+  let [title, setTitle] = useState(['남자코트추천', '오늘 축구', '이기자']);
+  let [num, setNum] = useState([0, 2, 3]);
   let [modal, setModal] = useState(false);
+  let [titleNumber, setTitleNumber] = useState(0);
 
-  let array = [2, 3, 4];
+  const appear = () => {
+    setModal(!modal);
+  };
+  let array = [1, 2, 3];
 
-  let aw = array.map(function (a) {
-    return a * 2;
-  });
+  let na = array.map((a) => a * 2);
+  console.log(na);
 
   const up = (index) => {
+    console.log('anjwl');
     let numArray = [...num];
     numArray[index]++;
 
@@ -32,37 +36,64 @@ function App() {
     // modal === true ? setModal(false) : setModal(true);
     setModal(!modal);
   };
-
   return (
     <div className="App">
       <div className="black-nav">
         <div>개발 Blog</div>
       </div>
-      <button onClick={onChange}>교체</button>
 
-      {title.map(function (a, index) {
+      {title.map((a, i) => {
         return (
           <div className="list">
-            <h3 onClick={click}>
-              {' '}
-              {a} <span onClick={() => up(index)}>👍{num[index]}</span>
+            <h3
+              onClick={() => {
+                setTitleNumber(i);
+              }}
+            >
+              {a}
             </h3>
-            <p>날짜</p>
-            <hr style={{ border: 'solid' }} />
+            <span onClick={() => up(i)}>👍{num[i]}</span>
+
+            <p>2 월 19일 발행</p>
+            <hr />
           </div>
         );
       })}
 
-      {modal === true ? <Modal></Modal> : null}
+      {/* <button
+        onClick={() => {
+          setTitleNumber(0);
+        }}
+      >
+        버튼1
+      </button>
+      <button
+        onClick={() => {
+          setTitleNumber(1);
+        }}
+      >
+        버튼2
+      </button>
+      <button
+        onClick={() => {
+          setTitleNumber(2);
+        }}
+      >
+        버튼3
+      </button> */}
+      <button onClick={appear}>열고 닫기</button>
+      {modal === true ? (
+        <Modal title={title} titleNumber={titleNumber}></Modal>
+      ) : null}
     </div>
   );
 }
 
 //컴포넌트 항상 대문자 시작
-function Modal() {
+function Modal(props) {
   return (
     <div className="modal">
-      <h3>제목</h3>
+      <h3>{props.title[props.titleNumber]}</h3>
       <p>날짜</p>
       <p>상세내용</p>
     </div>
