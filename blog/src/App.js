@@ -76,34 +76,6 @@ function App() {
           </div>
         );
       })}
-      {/* <button
-        onClick={() => {
-          setPushNumber(0);
-        }}
-      >
-        버튼1
-      </button>
-      <button
-        onClick={() => {
-          setPushNumber(1);
-        }}
-      >
-        버튼2
-      </button>
-      <button
-        onClick={() => {
-          setPushNumber(2);
-        }}
-      >
-        버튼3
-      </button> */}
-      {/* {input}
-      <input
-        onChange={(e) => {
-          console.log(e.target.value);
-          setInput(e.target.value);
-        }}
-      ></input> */}
 
       <div className="publish">
         <input
@@ -137,5 +109,6 @@ function Modal(props) {
       <p>상세내용</p>
     </div>
   );
+  //깃 확인
 }
 export default App;
