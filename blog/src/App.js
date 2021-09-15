@@ -19,9 +19,21 @@ function App() {
   };
 
   let up = (index) => {
-    let newCnt = [...cnt];
-    newCnt[index]++;
-    setCnt(newCnt);
+    let plusCnt = [...cnt];
+    plusCnt[index]++;
+    setCnt(plusCnt);
+  };
+
+  let minus = (index) => {
+    let minusCnt = [...cnt];
+    minusCnt[index]--;
+    setCnt(minusCnt);
+  };
+
+  let del = (index) => {
+    let choice = [...title];
+    choice.splice(index, 1);
+    setTitle(choice);
   };
   let change = () => {
     let newTitle = [...title];
@@ -57,6 +69,8 @@ function App() {
               {a}
             </h3>
             <span onClick={() => up(index)}>👍 {cnt[index]}</span>
+            <button onClick={() => minus(index)}>마이너스</button>
+            <button onClick={() => del(index)}>삭제버튼</button>
             <p>2월17일</p>
             <hr />
           </div>
