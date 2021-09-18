@@ -86,16 +86,20 @@ function App() {
         />
         <button
           onClick={(e) => {
-            title.push(input);
+            //unshift는 맨앞으로 추가
             let newTitle = [...title];
+            newTitle.push(input);
             setTitle(newTitle);
-            console.log('야호');
-            console.log(title);
+            let newCnt = [...cnt];
+            newCnt.push(0);
+            setCnt(newCnt);
           }}
         >
           저장{' '}
         </button>
       </div>
+
+      <Profile />
       {1 < 3 ? <Modal title={title} pushNumber={pushNumber}></Modal> : null}
     </div>
   );
@@ -104,11 +108,33 @@ function App() {
 function Modal(props) {
   return (
     <div className="modal">
-      <h2>{props.title}</h2>
+      <h2>{props.title[props.pushNumber]}</h2>
       <p>날짜</p>
       <p>상세내용</p>
     </div>
   );
   //깃 확인
+}
+
+class Profile extends React.Component {
+  constructor() {
+    super();
+    this.state = { name: 'Kim', age: 30 };
+  }
+
+  changeName() {
+    this.setState({ name: 'Kwon' });
+  }
+
+  render() {
+    return (
+      <div>
+        {' '}
+        <h3>프로필입니다.</h3>
+        <p>저는 {this.state.name} 입니다.</p>
+        <button onClick={this.changeName.bind(this)}>버튼</button>
+      </div>
+    );
+  }
 }
 export default App;
