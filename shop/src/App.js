@@ -3,9 +3,9 @@
 import logo from './logo.svg';
 import React, { useState } from 'react';
 import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap';
+import Data from './data';
 import './App.css';
 import Product from './Product';
-import Data from './data';
 
 function App() {
   let [shoes, setShoes] = useState(Data);
@@ -51,8 +51,8 @@ function App() {
 
       <div className="container">
         <div className="row">
-          {shoes.map((a, i) => {
-            return <Product shoes={a} i={i} key={i} />;
+          {shoes.map((shoes, i) => {
+            return <Product shoes={shoes} i={i} />;
           })}
         </div>
       </div>
