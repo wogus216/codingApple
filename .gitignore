@@ -4,7 +4,7 @@
 
 /node_modules
 /blog/node_modules
-/cafe/node_modules
+/shop/node_modules
 /.pnp
 .pnp.js
 
