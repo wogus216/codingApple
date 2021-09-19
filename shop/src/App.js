@@ -1,9 +1,10 @@
-/* eslint-disable-next-line */
+/* eslint-disable */
 
 import logo from './logo.svg';
 import React, { useState } from 'react';
 import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap';
 import './App.css';
+import Product from './Product';
 import Data from './data';
 
 function App() {
@@ -49,27 +50,14 @@ function App() {
       </div>
 
       <div className="container">
-        <div className="row">shoes.map(() => {<Product />})</div>
+        <div className="row">
+          {shoes.map((a, i) => {
+            return <Product shoes={a} i={i} key={i} />;
+          })}
+        </div>
       </div>
     </div>
   );
-  function Product() {
-    return (
-      <div className="col-md-4">
-        <img
-          src="https://codingapple1.github.io/shop/shoes2.jpg"
-          alt="shoes"
-          width="100%"
-        />
-        <h4>{shoes[0].title}</h4>
-        <p>
-          {shoes[0].content}
-          <br />
-          {shoes[0].price}
-        </p>
-      </div>
-    );
-  }
 }
 
 export default App;
