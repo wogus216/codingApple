@@ -1,15 +1,18 @@
 /* eslint-disable-next-line  */
 
-import logo from './logo.svg';
 import React, { useState } from 'react';
 import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap';
 import Data from './data';
 import './App.css';
 import { Link, Route, Switch } from 'react-router-dom';
 import Detail from './Detail';
+import axios from 'axios';
+import data from './data';
 
 function App() {
   let [shoes, setShoes] = useState(Data);
+  let [result, setResult] = useState('');
+  let [addshoes, setAddShoes] = useState(false);
 
   function Product(props) {
     return (
@@ -31,6 +34,14 @@ function App() {
     );
   }
 
+  function Add(props) {
+    return (
+      <div className="col-md-4">
+        <h3>{props.result[0].title}</h3>
+      </div>
+    );
+  }
+
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -39,11 +50,11 @@ function App() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link>
-                <Link to="/">Home</Link>
+              <Nav.Link as={Link} to="/">
+                Home
               </Nav.Link>
-              <Nav.Link>
-                <Link to="/detail">Detail</Link>
+              <Nav.Link as={Link} to="/detail">
+                Detail
               </Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -82,15 +93,30 @@ function App() {
                 return <Product shoes={shoes[i]} i={i} key={i} />;
               })}
             </div>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                //axios ajax요청 axiost json형태를 object 형태로 바꿔준다.
+                axios
+                  .get('https://codingapple1.github.io/shop/data2.json')
+                  .then(() => {
+                    setAddShoes(true);
+                    setResult(result.data);
+                    console.log(result.data);
+                  })
+                  .catch(() => {
+                    console.log('실패');
+                  });
+              }}
+            >
+              더보기
+            </button>
+            {addshoes === true ? <Add result={result} /> : null}
           </div>
         </Route>
 
         <Route path="/detail/:id">
           <Detail shoes={shoes} />
-        </Route>
-
-        <Route path="/:id">
-          <div>아무거나적었을때 이거 보여주셈</div>
         </Route>
       </Switch>
     </div>

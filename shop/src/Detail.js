@@ -12,17 +12,18 @@ let Name = styled.h4`
   color: ${(props) => props.color};
 `;
 
-let dis = styled.div`
-  display: none;
-`;
-
 function Detail(props) {
   let [alert, setAlert] = useState(true);
+  let [state, setState] = useState('');
   useEffect(() => {
-    setTimeout(() => {
-      setAlert(!alert);
+    let timer = setTimeout(() => {
+      setAlert(false);
     }, 2000);
-  });
+    console.log('안녕');
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [alert]);
   let { id } = useParams();
   let findProduct = props.shoes.find(function (shoe) {
     return shoe.id == id;
@@ -35,6 +36,13 @@ function Detail(props) {
         <Name className="red">상세페이지</Name>
       </Box>
       {alert === true ? <Alert /> : null}
+
+      {state}
+      <input
+        onChange={(e) => {
+          setState(e.target.value);
+        }}
+      />
       <div className="row">
         <div className="col-md-6">
           <img
