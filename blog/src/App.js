@@ -12,15 +12,20 @@ function App() {
   let [num, setNum] = useState([0, 1, 2]);
   let [modal, setModal] = useState(false);
   let [push, setPush] = useState(0);
+  let [input, setInput] = useState('');
   let posts = '마포 고기 맛집';
-  function fun() {
-    return 100;
-  }
 
   function change() {
     let newState = [...state];
     newState[0] = '여자추천맛집';
     setState(newState);
+  }
+
+  function save() {
+    let addState = [...state, input];
+    let addNum = [...num, 0];
+    setNum(addNum);
+    setState(addState);
   }
 
   function Modal(props) {
@@ -43,7 +48,7 @@ function App() {
       <button onClick={change}>제목 바꾸기</button>
       {state.map((a, i) => {
         return (
-          <div className="list">
+          <div className="list" key={i}>
             <h4
               onClick={() => {
                 setPush(i);
@@ -87,6 +92,13 @@ function App() {
       >
         버튼3
       </button> */}
+      {input}
+      <input
+        onChange={(e) => {
+          setInput(e.target.value);
+        }}
+      />
+      <button onClick={save}>저장</button>
       <button
         onClick={() => {
           setModal(!modal);
