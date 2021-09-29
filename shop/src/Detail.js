@@ -26,7 +26,7 @@ function Detail(props) {
   }, [alert]);
   let { id } = useParams();
   let findProduct = props.shoes.find(function (shoe) {
-    return shoe.id == id;
+    return shoe.id === id;
   });
   let history = useHistory();
 
@@ -55,7 +55,18 @@ function Detail(props) {
           <h4 className="pt-5">{findProduct.title}</h4>
           <p>{findProduct.content}</p>
           <p>{findProduct.price}</p>
-          <button className="btn btn-danger">주문하기</button>
+
+          <Info stock={props.stock} />
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              let newStock = [...props.stock];
+              newStock = [9, 11, 12];
+              props.setStock(newStock);
+            }}
+          >
+            주문하기
+          </button>
           <br />
           <button
             className="btn btn-danger"
@@ -77,6 +88,10 @@ function Alert() {
       <p>재고가 얼마 남지 않았습니다.</p>
     </div>
   );
+}
+
+function Info(props) {
+  return <p>재고 : {props.stock[0]} </p>;
 }
 
 export default Detail;
