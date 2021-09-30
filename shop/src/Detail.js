@@ -1,75 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router';
-import styled from 'styled-components';
-import './Detail.scss';
-
-let Box = styled.div`
-  padding: 20px;
-`;
-
-let Name = styled.h4`
-  font-size: 25px;
-  color: ${(props) => props.color};
-`;
+import React from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import data from './data';
 
 function Detail(props) {
-  let [alert, setAlert] = useState(true);
-  let [state, setState] = useState('');
-  useEffect(() => {
-    let timer = setTimeout(() => {
-      setAlert(false);
-    }, 2000);
-    console.log('안녕');
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [alert]);
+  let history = useHistory(); // 방문기록을 저장해 놓는 object
   let { id } = useParams();
-  let findProduct = props.shoes.find(function (shoe) {
-    return shoe.id === id;
+  let findShoes = props.shoes.find((shoes) => {
+    return shoes.id == id;
   });
-  let history = useHistory();
+  let 찾은상품 = props.shoes.find(function (상품) {
+    return 상품.id == id;
+  });
 
+  console.log(findShoes);
   return (
     <div className="container">
-      <Box>
-        <Name className="red">상세페이지</Name>
-      </Box>
-      {alert === true ? <Alert /> : null}
-
-      {state}
-      <input
-        onChange={(e) => {
-          setState(e.target.value);
-        }}
-      />
       <div className="row">
         <div className="col-md-6">
           <img
-            src="https://codingapple1.github.io/shop/shoes1.jpg"
-            alt="신발사진"
+            src={'https://codingapple1.github.io/shop/shoes' + id + '.jpg'}
+            alt="이미지"
             width="100%"
           />
         </div>
         <div className="col-md-6 mt-4">
-          <h4 className="pt-5">{findProduct.title}</h4>
-          <p>{findProduct.content}</p>
-          <p>{findProduct.price}</p>
-
-          <Info stock={props.stock} />
+          <h4 className="pt-5">{findShoes.title}</h4>
+          <p>{props.shoes[id].content}</p>
+          <p>{props.shoes[id].price}</p>
+          <button className="btn btn-danger">주문하기</button>
+          &nbsp;
           <button
-            className="btn btn-danger"
-            onClick={() => {
-              let newStock = [...props.stock];
-              newStock = [9, 11, 12];
-              props.setStock(newStock);
-            }}
-          >
-            주문하기
-          </button>
-          <br />
-          <button
-            className="btn btn-danger"
+            className="btn btn-primary"
             onClick={() => {
               history.goBack();
             }}
@@ -80,18 +41,6 @@ function Detail(props) {
       </div>
     </div>
   );
-}
-
-function Alert() {
-  return (
-    <div className="my-alert">
-      <p>재고가 얼마 남지 않았습니다.</p>
-    </div>
-  );
-}
-
-function Info(props) {
-  return <p>재고 : {props.stock[0]} </p>;
 }
 
 export default Detail;
