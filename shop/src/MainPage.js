@@ -2,8 +2,10 @@ import Card from './jumbotron';
 import { Button } from 'react-bootstrap';
 import shoes from './data';
 import axios from 'axios';
+import React, { useState } from 'react';
 
 export default function Main(props) {
+  const [load, setLoad] = useState(false);
   return (
     <>
       <div className="jumbotron">
@@ -30,21 +32,29 @@ export default function Main(props) {
         <button
           className="btn btn-primary"
           onClick={() => {
+            setLoad(true);
             axios
               .get('https://codingapple1.github.io/shop/data2.json')
               .then((result) => {
+                setLoad(false);
                 console.log(result.data);
                 let addShoes = [...shoes, ...result.data];
                 props.setShoes(addShoes);
               })
               .catch(() => {
+                setLoad(false);
                 console.log('실패했어요');
               });
           }}
         >
           더보기
         </button>
+        {load === true ? <Loading /> : null}
       </div>
     </>
   );
+
+  function Loading() {
+    return <h3>로딩 중</h3>;
+  }
 }

@@ -12,7 +12,8 @@ import axios from 'axios';
 
 function App() {
   let [shoes, setShoes] = useState(Data);
-  ``;
+  let [stock, setStock] = useState([10, 11, 12]);
+
   // const getAddshoes = (shoes) => {
   //   return setShoes(shoes);
   // };
@@ -40,7 +41,7 @@ function App() {
           <MainPage setShoes={setShoes} shoes={shoes} />
         </Route>
         <Route path="/detail/:id">
-          <Detail shoes={shoes} />
+          <Detail shoes={shoes} stock={stock} setStock={setStock} />
         </Route>
       </Switch>
       {/* <Route path="/d" component={Card}></Route> */}

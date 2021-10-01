@@ -17,10 +17,11 @@ let Title = styled.h4`
 function Detail(props) {
   const [state, setState] = useState(true);
   const [inputData, setInputData] = useState('');
+  console.log(props.stock);
   useEffect(() => {
     console.log('실행 중');
     let timer = setTimeout(() => {
-      setState(!false);
+      setState(false);
     }, 2000);
     return () => {
       clearTimeout(timer);
@@ -59,7 +60,19 @@ function Detail(props) {
           <h4 className="pt-5">{findShoes.title}</h4>
           <p>{findShoes.content}</p>
           <p>{findShoes.price}</p>
-          <button className="btn btn-danger">주문하기</button>
+          {/* <p>재고:{props.stock[id]}</p>
+           */}
+          <Info stock={props.stock} i={id} />
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              let newStock = [...props.stock];
+              newStock[id] -= 1;
+              props.setStock(newStock);
+            }}
+          >
+            주문하기
+          </button>
           &nbsp;
           <button
             className="btn btn-primary"
@@ -73,6 +86,10 @@ function Detail(props) {
       </div>
     </div>
   );
+}
+
+function Info(props, i) {
+  return <p>재고: {props.stock[props.i]}</p>;
 }
 
 function Alert() {
