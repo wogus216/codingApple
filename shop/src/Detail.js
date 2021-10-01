@@ -1,20 +1,52 @@
-import React from 'react';
+/* eslint-disable */
+
+import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import data from './data';
+import styled from 'styled-components';
+import './Detail.scss';
+
+let Box = styled.div`
+  padding: 20px;
+`;
+let Title = styled.h4`
+  font-size: 25px;
+  color: ${(props) => props.color};
+`;
 
 function Detail(props) {
+  const [state, setState] = useState(true);
+  const [inputData, setInputData] = useState('');
+  useEffect(() => {
+    console.log('실행 중');
+    let timer = setTimeout(() => {
+      setState(!false);
+    }, 2000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
   let history = useHistory(); // 방문기록을 저장해 놓는 object
   let { id } = useParams();
   let findShoes = props.shoes.find((shoes) => {
-    return shoes.id == id;
-  });
-  let 찾은상품 = props.shoes.find(function (상품) {
-    return 상품.id == id;
+    console.log(typeof shoes.id);
+    console.log(typeof Number(id));
+    return shoes.id === Number(id);
   });
 
   console.log(findShoes);
   return (
     <div className="container">
+      <Box>
+        <Title className="red">Detail</Title>
+      </Box>
+      {inputData}
+      <input
+        onChange={(e) => {
+          setInputData(e.target.value);
+        }}
+      />
+      {state === true ? <Alert /> : null}
       <div className="row">
         <div className="col-md-6">
           <img
@@ -25,8 +57,8 @@ function Detail(props) {
         </div>
         <div className="col-md-6 mt-4">
           <h4 className="pt-5">{findShoes.title}</h4>
-          <p>{props.shoes[id].content}</p>
-          <p>{props.shoes[id].price}</p>
+          <p>{findShoes.content}</p>
+          <p>{findShoes.price}</p>
           <button className="btn btn-danger">주문하기</button>
           &nbsp;
           <button
@@ -39,6 +71,14 @@ function Detail(props) {
           </button>
         </div>
       </div>
+    </div>
+  );
+}
+
+function Alert() {
+  return (
+    <div className="my-alert-red">
+      <p>재고가 얼마 남지 않았습니다.</p>{' '}
     </div>
   );
 }

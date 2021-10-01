@@ -1,7 +1,9 @@
 import Card from './jumbotron';
 import { Button } from 'react-bootstrap';
 import shoes from './data';
-export default function Main() {
+import axios from 'axios';
+
+export default function Main(props) {
   return (
     <>
       <div className="jumbotron">
@@ -21,10 +23,27 @@ export default function Main() {
 
       <div className="container">
         <div className="row">
-          {shoes.map((a, i) => {
-            return <Card shoes={shoes[i]} i={i} key={i} />;
+          {props.shoes.map((a, i) => {
+            return <Card shoes={props.shoes[i]} i={i} key={i} />;
           })}
         </div>
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            axios
+              .get('https://codingapple1.github.io/shop/data2.json')
+              .then((result) => {
+                console.log(result.data);
+                let addShoes = [...shoes, ...result.data];
+                props.setShoes(addShoes);
+              })
+              .catch(() => {
+                console.log('실패했어요');
+              });
+          }}
+        >
+          더보기
+        </button>
       </div>
     </>
   );
