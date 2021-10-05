@@ -10,6 +10,8 @@ import { Link, Route, Switch } from 'react-router-dom';
 import Detail from './Detail';
 import axios from 'axios';
 
+export let stockContext = React.createContext();
+
 function App() {
   let [shoes, setShoes] = useState(Data);
   let [stock, setStock] = useState([10, 11, 12]);
@@ -38,7 +40,7 @@ function App() {
 
       <Switch>
         <Route exact path="/">
-          <MainPage setShoes={setShoes} shoes={shoes} />
+          <MainPage setShoes={setShoes} shoes={shoes} stock={stock} />
         </Route>
         <Route path="/detail/:id">
           <Detail shoes={shoes} stock={stock} setStock={setStock} />

@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import shoes from './data';
 import axios from 'axios';
 import React, { useState } from 'react';
+import { stockContext } from './App';
 
 export default function Main(props) {
   const [load, setLoad] = useState(false);
@@ -24,11 +25,13 @@ export default function Main(props) {
       </div>
 
       <div className="container">
-        <div className="row">
-          {props.shoes.map((a, i) => {
-            return <Card shoes={props.shoes[i]} i={i} key={i} />;
-          })}
-        </div>
+        <stockContext.Provider value={props.stock}>
+          <div className="row">
+            {props.shoes.map((a, i) => {
+              return <Card shoes={props.shoes[i]} i={i} key={i} />;
+            })}
+          </div>
+        </stockContext.Provider>
         <button
           className="btn btn-primary"
           onClick={() => {

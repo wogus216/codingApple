@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { stockContext } from './App';
 
 export default function Card(props) {
+  let stock = useContext(stockContext);
   return (
     <div className="col-md-4">
       <img
@@ -13,6 +15,7 @@ export default function Card(props) {
       <h4>{props.shoes.title}</h4>
       <p>{props.shoes.content}</p>
       <p>{props.shoes.price}</p>
+      <p>{stock[props.i]}</p>
     </div>
   );
 }
