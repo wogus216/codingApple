@@ -1,11 +1,13 @@
 /* eslint-disable */
 
 import React, { useState, useEffect, useContext } from 'react';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router-dom';
 import data from './data';
 import styled from 'styled-components';
 import './Detail.scss';
 import { stockContext } from './App';
+import { CSSTransition } from 'react-transition-group';
 
 let Box = styled.div`
   padding: 20px;
@@ -18,6 +20,8 @@ let Title = styled.h4`
 function Detail(props) {
   const [state, setState] = useState(true);
   const [inputData, setInputData] = useState('');
+  const [tab, setTab] = useState(0);
+  let [Switch, setSwitch] = useState(false);
 
   console.log(props.stock);
 
@@ -89,8 +93,49 @@ function Detail(props) {
           </div>
         </stockContext.Provider>
       </div>
+
+      <Nav className="mt-5" variant="tabs" defaultActiveKey="link-0">
+        <Nav.Item>
+          <Nav.Link
+            eventKey="link-0"
+            onClick={() => {
+              setTab(0);
+              setSwitch(false);
+            }}
+          >
+            Active
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            eventKey="link-1"
+            onClick={() => {
+              setTab(1);
+              setSwitch(false);
+            }}
+          >
+            Option 2
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
+      <CSSTransition in={Switch} classNames="wow" timeout={500}>
+        <TabContent tab={tab} setSwitch={setSwitch} />
+      </CSSTransition>
     </div>
   );
+}
+
+function TabContent(props) {
+  useEffect(() => {
+    props.setSwitch(true);
+  });
+  if (props.tab === 0) {
+    return <div>0번째 내용입니다.</div>;
+  } else if (props.tab === 1) {
+    return <div> 1번째 내용입니다.</div>;
+  } else if (props.tab === 2) {
+    return <div> 2번째 내용입니다.</div>;
+  }
 }
 
 function Info(props) {

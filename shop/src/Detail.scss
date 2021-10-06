@@ -1,6 +1,20 @@
 /* eslint-disable */
 $mainColor: #ff0000;
 
+.wow-enter {
+  opacity: 0;
+}
+
+.wow-enter-active {
+  opacity: 1;
+  transform: all 500ms;
+  background-color: #ff3591;
+}
+
+.wow-exit-active {
+  background: #ff0000;
+}
+
 .red {
   color: $mainColor;
 }

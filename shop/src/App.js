@@ -9,6 +9,7 @@ import MainPage from './MainPage';
 import { Link, Route, Switch } from 'react-router-dom';
 import Detail from './Detail';
 import axios from 'axios';
+import Cart from './Cart';
 
 export let stockContext = React.createContext();
 
@@ -44,6 +45,10 @@ function App() {
         </Route>
         <Route path="/detail/:id">
           <Detail shoes={shoes} stock={stock} setStock={setStock} />
+        </Route>
+
+        <Route path="/Cart">
+          <Cart></Cart>
         </Route>
       </Switch>
       {/* <Route path="/d" component={Card}></Route> */}
