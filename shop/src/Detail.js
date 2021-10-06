@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import './Detail.scss';
 import { stockContext } from './App';
 import { CSSTransition } from 'react-transition-group';
+import { connect } from 'react-redux';
 
 let Box = styled.div`
   padding: 20px;
@@ -37,18 +38,14 @@ function Detail(props) {
   let history = useHistory(); // 방문기록을 저장해 놓는 object
   let { id } = useParams();
   let findShoes = props.shoes.find((shoes) => {
-    console.log(typeof shoes.id);
-    console.log(typeof Number(id));
     return shoes.id === Number(id);
   });
-
-  console.log(findShoes);
   return (
     <div className="container">
       <Box>
         <Title className="red">Detail</Title>
       </Box>
-      {inputData}
+
       <input
         onChange={(e) => {
           setInputData(e.target.value);
@@ -77,6 +74,11 @@ function Detail(props) {
                 let newStock = [...props.stock];
                 newStock[id] -= 1;
                 props.setStock(newStock);
+                props.dispatch({
+                  type: '항목추가',
+                  payload: { id: 3, name: findShoes.title, quan: 1 },
+                });
+                history.push('/cart');
               }}
             >
               주문하기
@@ -151,4 +153,13 @@ function Alert() {
   );
 }
 
-export default Detail;
+function functionName(state) {
+  console.log(state);
+  return {
+    state: state.reducer,
+    alertOpen: state.reducer2,
+  };
+}
+
+export default connect(functionName)(Detail);
+// export default Detail;

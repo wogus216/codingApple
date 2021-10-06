@@ -26,6 +26,24 @@ let firstValue = [
 ];
 
 function reducer(state = firstValue, action) {
+  console.log(state);
+
+  if (action.type === '항목추가') {
+    let found = state.find((a) => {
+      console.log(a.name);
+      console.log(action.payload.name);
+      return a.name === action.payload.name;
+    });
+    if (found) {
+      console.log('aa', found);
+      let copy = [...state];
+      copy[found.id].quan++;
+    } else {
+      let copy = [...state];
+      copy.push(action.payload);
+      return copy;
+    }
+  }
   if (action.type === '수량증가') {
     let copy = [...state];
     copy[0].quan++;
