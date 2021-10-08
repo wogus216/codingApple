@@ -1,10 +1,17 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router';
 import { stockContext } from './App';
 
 export default function Card(props) {
   let stock = useContext(stockContext);
+  let history = useHistory();
   return (
-    <div className="col-md-4">
+    <div
+      className="col-md-4"
+      onClick={() => {
+        history.push('/detail/' + props.shoes.id);
+      }}
+    >
       <img
         src={
           'https://codingapple1.github.io/shop/shoes' + (props.i + 1) + '.jpg'

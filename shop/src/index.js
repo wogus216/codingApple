@@ -22,18 +22,34 @@ function reducer2(state = alertValue, action) {
 let firstValue = [
   { id: 0, name: '멋진신발', quan: 2 },
   { id: 1, name: '아디신발', quan: 3 },
-  { id: 2, name: '멋진신발', quan: 5 },
 ];
 
 function reducer(state = firstValue, action) {
+  console.log('index state', state);
+  console.log('액션id', action.data);
+  if (action.type === '항목추가') {
+    let found = state.findIndex((a) => {
+      return a.id === action.data;
+    });
+    console.log('found', found);
+    if (found >= 0) {
+      let copy = [...state];
+      copy[found].quan++;
+      return copy;
+    } else {
+      let copy = [...state];
+      copy.push(action.data);
+      return copy;
+    }
+  }
   if (action.type === '수량증가') {
     let copy = [...state];
-    copy[0].quan++;
+    copy[action.data].quan++;
 
     return copy;
   } else if (action.type === '수량감소') {
     let copy2 = [...state];
-    copy2[0].quan--;
+    copy2[action.data].quan--;
 
     return copy2;
   } else {

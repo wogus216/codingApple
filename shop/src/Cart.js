@@ -1,9 +1,12 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Cart(props) {
-  console.log(props.state);
+  const state = useSelector((state) => state);
+  console.log('reducer', state.reducer);
+  const dispatch = useDispatch();
+  console.log('state', state);
   return (
     <div>
       <div>
@@ -17,23 +20,26 @@ function Cart(props) {
             </tr>
           </thead>
           <tbody>
-            {props.state.map((data, i) => {
+            {state.reducer.map((a, i) => {
               return (
                 <tr key={i}>
-                  <td>{data.id + 1}</td>
-                  <td>{data.name}</td>
-                  <td>{data.quan}</td>
+                  <td>{a.id + 1}</td>
+                  <td>{a.name}</td>
+                  <td>{a.quan}</td>
                   <td>
                     <button
                       onClick={() => {
-                        props.dispatch({ type: '수량증가' });
+                        dispatch({
+                          type: '수량증가',
+                          data: a.id,
+                        });
                       }}
                     >
                       +
                     </button>
                     <button
                       onClick={() => {
-                        props.dispatch({ type: '수량감소' });
+                        dispatch({ type: '수량감소', data: a.id });
                       }}
                     >
                       -
@@ -61,13 +67,13 @@ function Cart(props) {
   );
 }
 
-function functionName(state) {
-  console.log(state);
-  return {
-    state: state.reducer,
-    alertOpen: state.reducer2,
-  };
-}
+// function functionName(state) {
+//   console.log(state);
+//   return {
+//     state: state.reducer,
+//     alertOpen: state.reducer2,
+//   };
+// }
 
-export default connect(functionName)(Cart);
-// export default Cart;
+// export default connect(functionName)(Cart);
+export default Cart;
