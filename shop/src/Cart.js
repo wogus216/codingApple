@@ -29,9 +29,9 @@ function Cart(props) {
                   <td>
                     <button
                       onClick={() => {
-                        dispatch({
+                        props.dispatch({
                           type: '수량증가',
-                          data: a.id,
+                          payload: { name: 'kim' },
                         });
                       }}
                     >

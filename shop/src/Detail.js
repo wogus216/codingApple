@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import './Detail.scss';
 import { stockContext } from './App';
 import { CSSTransition } from 'react-transition-group';
-import { connect, useSelector, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 
 let Box = styled.div`
   padding: 20px;
@@ -157,13 +157,13 @@ function Alert() {
   );
 }
 
-// function functionName(state) {
-//   console.log(state);
-//   return {
-//     state: state.reducer,
-//     alertOpen: state.reducer2,
-//   };
-// }
+function functionName(state) {
+  console.log(state);
+  return {
+    state: state.reducer,
+    alertOpen: state.reducer2,
+  };
+}
 
-// export default connect(functionName)(Detail);
-export default Detail;
+export default connect(functionName)(Detail);
+// export default Detail;

@@ -25,20 +25,21 @@ let firstValue = [
 ];
 
 function reducer(state = firstValue, action) {
-  console.log('index state', state);
-  console.log('액션id', action.data);
+  console.log(state);
+
   if (action.type === '항목추가') {
-    let found = state.findIndex((a) => {
-      return a.id === action.data;
+    let found = state.find((a) => {
+      console.log(a.name);
+      console.log(action.payload.name);
+      return a.name === action.payload.name;
     });
-    console.log('found', found);
-    if (found >= 0) {
+    if (found) {
+      console.log('aa', found);
       let copy = [...state];
-      copy[found].quan++;
-      return copy;
+      copy[found.id].quan++;
     } else {
       let copy = [...state];
-      copy.push(action.data);
+      copy.push(action.payload);
       return copy;
     }
   }
