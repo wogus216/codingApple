@@ -8,51 +8,63 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
 
-let alertValue = true;
+let alert = true;
 
-function reducer2(state = alertValue, action) {
+function reducer2(state = alert, action) {
   if (action.type === '닫기') {
     state = false;
-    return state;
   } else {
     return state;
   }
 }
 
-let firstValue = [
-  { id: 0, name: '멋진신발', quan: 2 },
-  { id: 1, name: '아디신발', quan: 3 },
+let first = [
+  { id: 0, name: 'nike', quan: 2, 사이즈: 250 },
+  { id: 1, name: 'adidas', quan: 1, 사이즈: 260 },
 ];
 
-function reducer(state = firstValue, action) {
-  console.log(state);
+function reducer(state = first, action) {
+  //항목제거
+  if (action.type === '항목제거') {
+    console.log(action.data);
+    let copy = [...state];
+    copy = copy.filter((a) => a.id !== action.data);
+    return copy;
+  }
 
   if (action.type === '항목추가') {
-    let found = state.find((a) => {
-      console.log(a.name);
-      console.log(action.payload.name);
-      return a.name === action.payload.name;
+    let copy = [...state];
+    let found = state.findIndex((a) => {
+      console.log('a.id', a.id);
+      return a.id === action.payload.id;
     });
-    if (found) {
-      console.log('aa', found);
-      let copy = [...state];
-      copy[found.id].quan++;
+
+    console.log('found', found);
+    console.log('action.quan', action.payload.quan);
+
+    if (found >= 0) {
+      copy[found].quan++;
+      console.log('중복증가 ', copy);
+      return copy;
     } else {
-      let copy = [...state];
+      console.log('action', action);
       copy.push(action.payload);
+      console.log('항목추가 ', copy);
       return copy;
     }
   }
+  //수량 증가
   if (action.type === '수량증가') {
     let copy = [...state];
+    console.log('action.payload.quan', action.payload.quan);
     copy[action.data].quan++;
-
     return copy;
   } else if (action.type === '수량감소') {
-    let copy2 = [...state];
-    copy2[action.data].quan--;
-
-    return copy2;
+    let copy = [...state];
+    if (copy[action.data].quan > 0) {
+      copy[action.data].quan--;
+    }
+    return copy;
   } else {
     return state;
   }

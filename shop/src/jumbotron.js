@@ -4,6 +4,7 @@ import { stockContext } from './App';
 
 export default function Card(props) {
   let stock = useContext(stockContext);
+  //페이지 이동
   let history = useHistory();
   return (
     <div

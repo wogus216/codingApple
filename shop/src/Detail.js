@@ -9,6 +9,7 @@ import './Detail.scss';
 import { stockContext } from './App';
 import { CSSTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
+import Select from 'react-select';
 
 let Box = styled.div`
   padding: 20px;
@@ -18,13 +19,19 @@ let Title = styled.h4`
   color: ${(props) => props.color};
 `;
 
+const options = [
+  { value: '250', label: '250' },
+  { value: '270', label: '270' },
+  { value: '280', label: '280' },
+];
+
 function Detail(props) {
   const [state, setState] = useState(true);
   const [inputData, setInputData] = useState('');
   const [tab, setTab] = useState(0);
   let [Switch, setSwitch] = useState(false);
-  let selector = useSelector((state) => state);
-  const dispatch = useDispatch();
+  const [order, setOrder] = useState(0);
+  const [size, setSize] = useState(0);
 
   useEffect(() => {
     console.log('실행 중');
@@ -78,16 +85,37 @@ function Detail(props) {
                 let newStock = [...props.stock];
                 newStock[id] -= 1;
                 props.setStock(newStock);
-                dispatch({
+                props.dispatch({
                   type: '항목추가',
-                  payload: { id: findShoes.id, name: findShoes.title, quan: 1 },
+                  payload: {
+                    id: findShoes.id,
+                    name: findShoes.title,
+                    quan: order,
+                    size: size,
+                  },
                 });
                 history.push('/cart');
               }}
             >
               주문하기
             </button>
+            {order}
+            <input
+              type="number"
+              onChange={(e) => {
+                setOrder(e.target.value);
+                console.log(order);
+              }}
+            />
             &nbsp;
+            <Select
+              onChange={(e) => {
+                console.log('ee', e.value);
+                setSize(e.value);
+              }}
+              options={options}
+              placeholder={'사이즈를 선택하시오'}
+            />
             <button
               className="btn btn-primary"
               onClick={() => {
@@ -157,13 +185,13 @@ function Alert() {
   );
 }
 
-function functionName(state) {
-  console.log(state);
+function name(state) {
   return {
     state: state.reducer,
     alertOpen: state.reducer2,
   };
 }
 
-export default connect(functionName)(Detail);
+export default connect(name)(Detail);
+
 // export default Detail;
