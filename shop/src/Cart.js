@@ -7,12 +7,12 @@ function Cart(props) {
   console.log('state', state);
   let dispatch = useDispatch();
   const [see, setSee] = useState(false);
-
+  let style = { color: 'red' };
   return (
     <div>
       <Table>
         <thead>
-          <tr>
+          <tr style={style}>
             <th>#</th>
             <th>상품명</th>
             <th>수량</th>

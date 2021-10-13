@@ -1,13 +1,13 @@
 /* eslint-disable */
 
 import React, { useState, useEffect, useContext } from 'react';
-import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router-dom';
 import data from './data';
 import styled from 'styled-components';
 import './Detail.scss';
 import { stockContext } from './App';
-import { CSSTransition } from 'react-transition-group';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import { connect } from 'react-redux';
 import Select from 'react-select';
 
@@ -20,9 +20,9 @@ let Title = styled.h4`
 `;
 
 const options = [
-  { value: '250', label: '250' },
-  { value: '270', label: '270' },
-  { value: '280', label: '280' },
+  { value: 250, label: '250' },
+  { value: 270, label: '270' },
+  { value: 280, label: '280' },
 ];
 
 function Detail(props) {
@@ -47,6 +47,18 @@ function Detail(props) {
   let findShoes = props.shoes.find((shoes) => {
     return shoes.id === Number(id);
   });
+  // console.log('saw', localStorage.getItem('saw'));
+  if (localStorage.getItem('saw') == null) {
+    console.log(1);
+  }
+  let oldArr = [];
+  localStorage.setItem('saw', JSON.stringify(id));
+  console.log('a', JSON.parse(localStorage.getItem('saw')));
+  oldArr.push(JSON.parse(localStorage.getItem('saw')));
+  //  JSON.parse(localStorage.getItem('saw'));
+  oldArr.push('3');
+  localStorage.setItem('saw', JSON.stringify(oldArr));
+  console.log('oldArr', oldArr);
   return (
     <div className="container">
       <Box>
@@ -90,7 +102,7 @@ function Detail(props) {
                   payload: {
                     id: findShoes.id,
                     name: findShoes.title,
-                    quan: order,
+                    quan: Number(order),
                     size: size,
                   },
                 });

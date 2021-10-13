@@ -1,13 +1,16 @@
 /* eslint-disable  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import './App.css';
 import Data from './data';
 import MainPage from './MainPage';
 
 import { Link, Route, Switch } from 'react-router-dom';
-import Detail from './Detail';
+// import Detail from './Detail';
+let Detail = lazy(() => {
+  return import('./Detail.js');
+});
 import axios from 'axios';
 import Cart from './Cart';
 
@@ -16,14 +19,26 @@ export let stockContext = React.createContext();
 function App() {
   let [shoes, setShoes] = useState(Data);
   let [stock, setStock] = useState([10, 11, 12]);
+  const [count, setCount] = useState(0);
+  const [age, setAge] = useState(20);
 
   // const getAddshoes = (shoes) => {
   //   return setShoes(shoes);
   // };
+  useEffect(() => {
+    if (count !== 0 && count < 3) {
+      setAge(age + 1);
+    }
+  }, [count]);
 
+  function work() {
+    return count < 3 ? setCount(count + 1) : console.log('3를 넘었습니다.');
+  }
   console.log(shoes);
   return (
     <div className="App">
+      <div>안녕하십니까? 전 {age}</div>
+      <button onClick={work}>누르면 한살 먹기{count}</button>
       <Navbar bg="primary" variant="dark">
         <Container>
           <Navbar.Brand href="#home">Navbar</Navbar.Brand>
@@ -44,7 +59,9 @@ function App() {
           <MainPage setShoes={setShoes} shoes={shoes} stock={stock} />
         </Route>
         <Route path="/detail/:id">
-          <Detail shoes={shoes} stock={stock} setStock={setStock} />
+          <Suspense fallback={<div>로딩중이에요</div>}>
+            <Detail shoes={shoes} stock={stock} setStock={setStock} />
+          </Suspense>
         </Route>
 
         <Route path="/Cart">
