@@ -16,6 +16,7 @@ export default function BlogEntry({
       <button onClick={onClickDel}>삭제</button>
       <p>{date}</p>
       <hr />
+      <hr />
     </div>
   );
 }
