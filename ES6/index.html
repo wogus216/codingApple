@@ -1,0 +1,29 @@
+<div>
+
+</div>
+<script>
+
+  console.log(this);
+
+
+  function 함수(){
+      console.log(this)
+  }
+
+  함수();
+
+  //js 변수나 그런 것을 window라는 곳에 저장
+  window.함수();
+
+var obj = {
+    data : {
+      함수() {
+            console.log(this)
+        }
+    }
+}
+
+obj.data.함수();
+
+
+</script>
