@@ -1,29 +1,32 @@
 <div>
 
 </div>
+<button id="버튼">
+    버튼
+</button>
 <script>
 
-  console.log(this);
-
-
-  function 함수(){
-      console.log(this)
-  }
-
-  함수();
-
-  //js 변수나 그런 것을 window라는 곳에 저장
-  window.함수();
-
-var obj = {
-    data : {
-      함수() {
+document.getElementById('버튼').addEventListener('click',function(e){
+    //   console.log(this);
+    var arr = [1,2,3]
+    arr.forEach(function(a){
             console.log(this)
-        }
+    })
+    
+});
+var obj = {
+    names : ['김','이','박'],
+    func : function(){
+        console.log('위에',this)
+        obj.names.forEach(() =>{
+            console.log(this)
+        }) 
+        
     }
 }
 
-obj.data.함수();
+obj.func();
+
 
 
 </script>
