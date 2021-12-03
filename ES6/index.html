@@ -1,32 +1,22 @@
-<div>
-
-</div>
-<button id="버튼">
-    버튼
-</button>
+<div></div>
+<button id="버튼">버튼</button>
 <script>
+  var fun = (a, b) => {
+    return a + 10;
+  };
 
-document.getElementById('버튼').addEventListener('click',function(e){
-    //   console.log(this);
-    var arr = [1,2,3]
-    arr.forEach(function(a){
-            console.log(this)
-    })
-    
-});
-var obj = {
-    names : ['김','이','박'],
-    func : function(){
-        console.log('위에',this)
-        obj.names.forEach(() =>{
-            console.log(this)
-        }) 
-        
-    }
-}
+  [1, 2, 3, 4].forEach((a) => {
+    this;
+    console.log(a);
+  });
 
-obj.func();
+  document.getElementById('버튼').addEventListener('click', (e) => {
+    e.currentTarget;
+  });
 
-
-
+  let obj = {
+    func: () => {
+      return this;
+    },
+  };
 </script>
