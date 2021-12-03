@@ -1,18 +1,12 @@
-<div name="mo" style="display: none">모달창0</div>
-<div name="mo" style="display: none">모달창1</div>
-<div name="mo" style="display: none">모달창2</div>
-<div name="mo" style="display: none">모달창3</div>
-<button name="but">버튼0</button>
-<button name="but">버튼1</button>
-<button name="but">버튼2</button>
-<button name="but">버튼3</button>
+<div></div>
 <script>
-  let nameCnt = document.getElementsByName('but').length;
-  let butt = document.querySelectorAll('button');
-  let divs = document.querySelectorAll('div');
-  for (let i = 0; i < nameCnt; i++) {
-    butt[i].addEventListener('click', function () {
-      divs[i].style.display = 'block';
-    });
+  let son = `손흥민`;
+  let str = `안녕하세요 ${son} 입니다.`;
+
+  function 해체분석기(문자들, 변수들) {
+    console.log(문자들);
+    console.log(변수들);
   }
+
+  해체분석기`안녕하세요 ${son} 입니다.`;
 </script>
