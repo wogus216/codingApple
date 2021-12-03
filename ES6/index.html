@@ -1,51 +1,18 @@
 <div></div>
 <button id="but">버튼입니다.</button>
 <script>
-  document.getElementById('but').addEventListener('click', function () {
-    setTimeout(() => {
-      console.log(this.innerHTML);
-    }, 1000);
-  });
-
-  var fun = (a, b) => {
-    return a + 10;
-  };
-
-  [1, 2, 3, 4].forEach((a) => {
-    this;
-    console.log(a);
-  });
-
-  let obj = {
-    func: () => {
-      return this;
-    },
-  };
-
-  var human = {
-    name: '손흥민',
-    sayHi: (e) => {
-      console.log('안녕 나는 ' + e);
-    },
-  };
-
-  let file = {
-    data: [1, 2, 3, 4, 5],
-  };
-
-  let res = 0;
-  file.plus = function () {
-    this.data.forEach(function (a) {
-      res += a;
-    });
-    console.log('res :' + res);
-  };
-
-  function hi() {
-    console.log('안녕');
+  if (true) {
+    let a = 1;
+    var b = 2;
+    if (true) {
+      let b = 3;
+    }
+    console.log(b);
   }
+  var age;
 
-  setTimeout(function () {
-    hi();
-  }, 1000);
+  console.log(age);
+
+  let age = 20;
+  console.log(age);
 </script>
