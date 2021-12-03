@@ -1,18 +1,18 @@
-<div></div>
-<button id="but">버튼입니다.</button>
+<div name="mo" style="display: none">모달창0</div>
+<div name="mo" style="display: none">모달창1</div>
+<div name="mo" style="display: none">모달창2</div>
+<div name="mo" style="display: none">모달창3</div>
+<button name="but">버튼0</button>
+<button name="but">버튼1</button>
+<button name="but">버튼2</button>
+<button name="but">버튼3</button>
 <script>
-  if (true) {
-    let a = 1;
-    var b = 2;
-    if (true) {
-      let b = 3;
-    }
-    console.log(b);
+  let nameCnt = document.getElementsByName('but').length;
+  let butt = document.querySelectorAll('button');
+  let divs = document.querySelectorAll('div');
+  for (let i = 0; i < nameCnt; i++) {
+    butt[i].addEventListener('click', function () {
+      divs[i].style.display = 'block';
+    });
   }
-  var age;
-
-  console.log(age);
-
-  let age = 20;
-  console.log(age);
 </script>
