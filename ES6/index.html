@@ -1,19 +1,38 @@
 <div></div>
 <script>
-  let son = `손흥민`;
-  let str = `안녕하세요 ${son} 입니다.`;
+  let arr = ['hello', 'world'];
+  console.log(...arr);
 
-  function 해체분석기(문자들, ...변수들) {
-    console.log(문자들[1] + 변수들[0] + 문자들[0] + 변수들[1]);
-    변수들[0] === 0 ? console.log(`바지 안팔아요`) : null;
+  let str = 'hello';
+  console.log(str[1]);
+
+  // let a = [1, 2, 3];
+  // let b = [4, 5];
+  // let c = [...a, ...b];
+  // console.log(c);
+
+  let o1 = { a: 1, b: 2 };
+  let o2 = { a: 2, ...o1 };
+
+  console.log(o2);
+
+  let newArr = [10, 20, 30];
+
+  function plus(a, b, c) {
+    console.log(a + b + c);
   }
+  plus(...newArr);
 
-  해체분석기`안녕하세요 ${son} 입니다.`;
+  let person = {
+    인사: function () {
+      console.log(this.name + ' ' + '안녕');
+    },
+  };
 
-  let pants = 0;
-  let socks = 100;
+  let person2 = {
+    name: '손흥민',
+  };
 
-  console.log(`바지${pants} 양말${socks}`);
-
-  해체분석기`바지${pants} 양말${socks}`;
+  person.인사.apply(person2, [1, 2]);
+  person.인사.call(person2, 1, 2);
 </script>
