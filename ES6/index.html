@@ -1,38 +1,72 @@
 <div></div>
 <script>
-  let arr = ['hello', 'world'];
-  console.log(...arr);
+  // function tmp() {
+  //   return 11;
+  // }
 
-  let str = 'hello';
-  console.log(str[1]);
+  // function plus(a, b = tmp()) {
+  //   console.log(a + b);
+  // }
+  // plus(1);
 
-  // let a = [1, 2, 3];
-  // let b = [4, 5];
-  // let c = [...a, ...b];
-  // console.log(c);
+  // func(1, 2, 3);
 
-  let o1 = { a: 1, b: 2 };
-  let o2 = { a: 2, ...o1 };
+  // function func2(...rest) {
+  //   for (let i = 0; i < rest.length; i++) {
+  //     console.log('rest[i]=>', rest[i]);
+  //   }
+  // }
 
-  console.log(o2);
+  // func2(1, 2, 3, 4);
 
-  let newArr = [10, 20, 30];
+  //1.[김,밥,1,2,3]
+  let a = [1, 2, 3];
+  let b = ['you', 'are'];
+  let c = function (a, b) {
+    console.log([[...a], ...[...b][1]]);
+  };
+  c(a, b);
+  //[1,2,3,y,o,u,a,r,e,1]
 
-  function plus(a, b, c) {
-    console.log(a + b + c);
+  // function func(a = 5, b = a * 2) {
+  //   console.log(a + b);
+  //   return 10;
+  // }
+  // func(3);
+  //9
+
+  function func(a = 5, b = a * 2) {
+    console.log(a + b);
   }
-  plus(...newArr);
 
-  let person = {
-    인사: function () {
-      console.log(this.name + ' ' + '안녕');
-    },
-  };
+  func(undefined, undefined);
 
-  let person2 = {
-    name: '손흥민',
-  };
+  function array(...rest) {
+    return rest;
+  }
 
-  person.인사.apply(person2, [1, 2]);
-  person.인사.call(person2, 1, 2);
+  let newArray = array(1, 2, 3, 4, 5);
+  console.log(newArray);
+
+  let nums = [2, 3, 4, 5, 6, 1, 3, 2, 5, 5, 4, 6, 7];
+  console.log(Math.max(...nums));
+
+  function sorted(a) {
+    let str = [...a].sort();
+    return str;
+  }
+
+  console.log(sorted('bear'));
+
+  function strCnt(data) {
+    let res = {};
+
+    [...data].map((value) => {
+      res[value] > 0 ? res[value]++ : (res[value] = 1);
+    });
+
+    return res;
+  }
+
+  console.log(strCnt('aacbbb'));
 </script>
