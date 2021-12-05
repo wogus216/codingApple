@@ -3,10 +3,17 @@
   let son = `손흥민`;
   let str = `안녕하세요 ${son} 입니다.`;
 
-  function 해체분석기(문자들, 변수들) {
-    console.log(문자들);
-    console.log(변수들);
+  function 해체분석기(문자들, ...변수들) {
+    console.log(문자들[1] + 변수들[0] + 문자들[0] + 변수들[1]);
+    변수들[0] === 0 ? console.log(`바지 안팔아요`) : null;
   }
 
   해체분석기`안녕하세요 ${son} 입니다.`;
+
+  let pants = 0;
+  let socks = 100;
+
+  console.log(`바지${pants} 양말${socks}`);
+
+  해체분석기`바지${pants} 양말${socks}`;
 </script>
