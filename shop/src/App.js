@@ -5,7 +5,6 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 import './App.css';
 import Data from './data';
 import MainPage from './MainPage';
-
 import { Link, Route, Switch } from 'react-router-dom';
 // import Detail from './Detail';
 let Detail = lazy(() => {
@@ -37,6 +36,7 @@ function App() {
   console.log(shoes);
   return (
     <div className="App">
+      <div className="sidebar">사이드바</div>
       <div>안녕하십니까? 전 {age}</div>
       <button onClick={work}>누르면 한살 먹기{count}</button>
       <Navbar bg="primary" variant="dark">

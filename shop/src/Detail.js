@@ -24,7 +24,7 @@ const options = [
   { value: 270, label: '270' },
   { value: 280, label: '280' },
 ];
-
+let oldArr = [];
 function Detail(props) {
   const [state, setState] = useState(true);
   const [inputData, setInputData] = useState('');
@@ -51,14 +51,14 @@ function Detail(props) {
   if (localStorage.getItem('saw') == null) {
     console.log(1);
   }
-  let oldArr = [];
+
   localStorage.setItem('saw', JSON.stringify(id));
   console.log('a', JSON.parse(localStorage.getItem('saw')));
   oldArr.push(JSON.parse(localStorage.getItem('saw')));
   //  JSON.parse(localStorage.getItem('saw'));
-  oldArr.push('3');
+
   localStorage.setItem('saw', JSON.stringify(oldArr));
-  console.log('oldArr', oldArr);
+
   return (
     <div className="container">
       <Box>
@@ -111,7 +111,7 @@ function Detail(props) {
             >
               주문하기
             </button>
-            {order}
+            {/* {order}
             <input
               type="number"
               onChange={(e) => {
@@ -127,7 +127,7 @@ function Detail(props) {
               }}
               options={options}
               placeholder={'사이즈를 선택하시오'}
-            />
+            /> */}
             <button
               className="btn btn-primary"
               onClick={() => {

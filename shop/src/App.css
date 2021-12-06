@@ -28,6 +28,19 @@
   color: #61dafb;
 }
 
+.sidebar {
+  background-color: antiquewhite;
+  position: fixed;
+  right: 0;
+  z-index: 5;
+  font-size: 50px;
+  transition: 3ms;
+}
+
+.sidebar:hover {
+  transform: scaleX(10);
+}
+
 .jumbotron {
   background-color: rgb(128, 128, 128);
   height: 300px;
