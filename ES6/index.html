@@ -1,15 +1,46 @@
 <div></div>
 <script>
-  function mac(name) {
-    this.name = name;
-    this.age = 15;
-    this.sayHi = function () {
-      console.log('안녕하세요' + this.name + '입니다.');
-    };
-  }
+function mac(name, age){
+ this.name = name;
+ this.age = age;
 
-  mac.prototype.gender = '남';
+}
 
-  let stu1 = new mac('Park');
-  let stu2 = new mac('Kim');
+mac.prototype.sayHi = () => {
+  console.log('this',this)
+  console.log('안녕 나는 '+ this.name+' 이야')
+}
+
+
+let stu1 = new mac('Kim',20);
+let stu2 = new mac('Park', 21);
+let stu3 = new mac('Lee', 22);
+
+
+//문제1
+
+function Parent(){
+  this.name = 'Kim'
+}
+
+let a = new Parent();
+
+a.__proto__.name = 'Park';
+console.log(a.name)
+
+
+//문제 2
+
+// 보통 this는 자기를 부른 오브젝트를 가리키지만, arrow function 은 바깥에 있는 this를 소환한다. 그래서 여기서는 window
+
+//문제3
+let arr = [1,2,3];
+
+Array.prototype.remove3 = function(num){
+  console.log('idxNum',this.indexOf(num));
+  removeIdx = this.indexOf(num);
+  console.log(this[removeIdx])
+  this.splice(removeIdx,1);
+  console.log('this',this)
+}
 </script>
