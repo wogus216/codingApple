@@ -1,16 +1,15 @@
 <div></div>
 <script>
-  function mac(name, price) {
+  function mac(name) {
     this.name = name;
-    this.price = price;
-    this.tax = () => {
-      console.log(price * 0.1);
+    this.age = 15;
+    this.sayHi = function () {
+      console.log('안녕하세요' + this.name + '입니다.');
     };
   }
 
-  let product1 = new mac('shirts', 50000);
-  let product2 = new mac('pants', 60000);
+  mac.prototype.gender = '남';
 
-  console.log(product1);
-  product1.tax(50000);
+  let stu1 = new mac('Park');
+  let stu2 = new mac('Kim');
 </script>
