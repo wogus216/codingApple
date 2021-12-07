@@ -1,27 +1,32 @@
 <div></div>
 <script>
-  // Object.create(프로토타입object);
+  // let human = {
+  //   name: 'Park',
+  //   age: 30,
+  //   get nextAge() {
+  //     return this.age + 1;
+  //   },
+  //   set setAge(age) {
+  //     return (this.age = parseInt(age));
+  //   },
+  // };
 
-  // let parent = { name: 'Kim', age: 50 };
-  // let child = Object.create(parent);
-  // child.age = 20;
+  // human.setAge = '20';
 
-  // new Object();
+  // human.nextAge;
 
-  class parent {
-    constructor(a) {
-      this.name = a;
-      // this.sayHi = function () {
-      //   console.log('hello');
-      // };
+  class human {
+    constructor() {
+      this.name = 'Park';
+      this.age = 20;
     }
-    sayHi() {
-      console.log('hello');
+    get nextAge() {
+      return this.age + 1;
     }
-    sayHello() {
-      console.log('hello');
+    set setAge(age) {
+      this.age = age;
     }
   }
 
-  var child = new parent('Lee');
+  let human1 = new human();
 </script>
