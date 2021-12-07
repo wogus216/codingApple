@@ -1,32 +1,52 @@
 <div></div>
 <script>
-  // let human = {
-  //   name: 'Park',
-  //   age: 30,
-  //   get nextAge() {
-  //     return this.age + 1;
-  //   },
-  //   set setAge(age) {
-  //     return (this.age = parseInt(age));
-  //   },
-  // };
-
-  // human.setAge = '20';
-
-  // human.nextAge;
-
-  class human {
-    constructor() {
-      this.name = 'Park';
-      this.age = 20;
-    }
-    get nextAge() {
-      return this.age + 1;
-    }
-    set setAge(age) {
-      this.age = age;
+  class func {
+    constructor(type, color) {
+      this.type = type;
+      this.color = color;
     }
   }
 
-  let human1 = new human();
+  let dog1 = new func('말티즈', 'white');
+  let dog2 = new func('진돗개', 'brown');
+
+  class cat extends func {
+    constructor(type, color, age) {
+      super(type, color);
+
+      this.age = age;
+    }
+    getAge() {
+      return this.age + 1;
+    }
+  }
+
+  let cat1 = new cat('코숏', 'brown', 5);
+
+  class unit {
+    constructor() {
+      this.stx = 5;
+      this.stamina = 100;
+    }
+    get battlePoint() {
+      console.log('전투력==>', this.stx + this.stamina);
+    }
+    set heal(num) {
+      return (this.stamina += num);
+    }
+  }
+
+  let sancho = new unit();
+
+  var data = {
+    odd: [],
+    even: [],
+    setNum(...num) {
+      if (num % 2 === 0) {
+        return data.even.push(num);
+      } else {
+        return data.odd.push(num);
+      }
+    },
+  };
 </script>
