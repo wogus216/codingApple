@@ -37,16 +37,24 @@
   }
 
   let sancho = new unit();
-
-  var data = {
+  let resArr = [];
+  let data = {
     odd: [],
     even: [],
-    setNum(...num) {
-      if (num % 2 === 0) {
-        return data.even.push(num);
-      } else {
-        return data.odd.push(num);
-      }
+    setNum(...rest) {
+      console.log('this', this);
+      resArr = [...rest];
+      resArr.map((num) => {
+        if (num % 2 === 0) {
+          return data.even.push(num);
+        } else {
+          return data.odd.push(num);
+        }
+      });
+    },
+    getNum() {
+      let res = [...this.odd, ...this.even];
+      return res.sort();
     },
   };
 </script>
