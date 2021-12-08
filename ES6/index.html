@@ -1,41 +1,18 @@
-<div></div>
+<script></script>
 <script>
-  // let arr = [2, 3, 4];
-  // let [a, b, c = 10] = [2, 3];
+  console.log(1);
+  // setTimeout(() => {
+  //   console.log(2);
+  // }, 1000);
 
-  // let obj = { name: 'Kim', age: 30 };
-  // let name = obj.name;
-  // let age = obj.age;
-
-  // let { name: 나이 = 'Park' } = {};
-
-  // let name = 'Kim';
-  // let age = 30;
-
-  // let obj = { name, age };
-
-  let obj = { name: 'Kim', age: 30 };
-
-  function func([name, age]) {
-    console.log(name);
-    console.log(age);
+  function firstFunc(param) {
+    console.log(1);
+    param();
   }
 
-  func([1, 2]);
+  function secondFunc() {
+    console.log(2);
+  }
 
-  var [numd, address] = [30, 'seoul'];
-  var { address: a, numd = 20 } = { address, numd };
-
-  let info = {
-    body: {
-      height: 190,
-      weight: 70,
-    },
-    size: ['상의 Large', '바지 30인치'],
-  };
-
-  let {
-    body: { height, weight },
-    size: [상의, 항의],
-  } = info;
+  firstFunc(secondFunc);
 </script>
