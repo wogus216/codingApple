@@ -1,60 +1,41 @@
 <div></div>
 <script>
-  class func {
-    constructor(type, color) {
-      this.type = type;
-      this.color = color;
-    }
+  // let arr = [2, 3, 4];
+  // let [a, b, c = 10] = [2, 3];
+
+  // let obj = { name: 'Kim', age: 30 };
+  // let name = obj.name;
+  // let age = obj.age;
+
+  // let { name: 나이 = 'Park' } = {};
+
+  // let name = 'Kim';
+  // let age = 30;
+
+  // let obj = { name, age };
+
+  let obj = { name: 'Kim', age: 30 };
+
+  function func([name, age]) {
+    console.log(name);
+    console.log(age);
   }
 
-  let dog1 = new func('말티즈', 'white');
-  let dog2 = new func('진돗개', 'brown');
+  func([1, 2]);
 
-  class cat extends func {
-    constructor(type, color, age) {
-      super(type, color);
+  var [numd, address] = [30, 'seoul'];
+  var { address: a, numd = 20 } = { address, numd };
 
-      this.age = age;
-    }
-    getAge() {
-      return this.age + 1;
-    }
-  }
-
-  let cat1 = new cat('코숏', 'brown', 5);
-
-  class unit {
-    constructor() {
-      this.stx = 5;
-      this.stamina = 100;
-    }
-    get battlePoint() {
-      console.log('전투력==>', this.stx + this.stamina);
-    }
-    set heal(num) {
-      return (this.stamina += num);
-    }
-  }
-
-  let sancho = new unit();
-  let resArr = [];
-  let data = {
-    odd: [],
-    even: [],
-    setNum(...rest) {
-      console.log('this', this);
-      resArr = [...rest];
-      resArr.map((num) => {
-        if (num % 2 === 0) {
-          return data.even.push(num);
-        } else {
-          return data.odd.push(num);
-        }
-      });
+  let info = {
+    body: {
+      height: 190,
+      weight: 70,
     },
-    getNum() {
-      let res = [...this.odd, ...this.even];
-      return res.sort();
-    },
+    size: ['상의 Large', '바지 30인치'],
   };
+
+  let {
+    body: { height, weight },
+    size: [상의, 항의],
+  } = info;
 </script>
