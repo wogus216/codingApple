@@ -2,71 +2,20 @@
 <img id="test" src="https://codingapple1.github.io/kona.jpg" />
 <button id="but">버튼</button>
 <script>
-  //성공 실패 판정 기계
-  // let promise = new Promise(function (resolve, reject) {
-  //   let img = document.querySelector('#test');
+  // class parent {}
+  // parent.prototype.name = 'Park';
 
-  //   img.addEventListener('load', function () {
-  //     resolve();
-  //   });
+  // let obj = new parent();
 
-  //   img.addEventListener('error', function () {
-  //     reject();
-  //   });
-  // });
+  // for (let key in obj) {
+  //   console.log(obj[key]);
+  // }
 
-  // promise
-  //   .then(function () {
-  //     console.log('success');
-  //   })
-  //   .catch(function () {
-  //     conosole.log('fail');
-  //   });
+  let arr = [2, 3, 4, 5, 6, 7, 8, 9];
 
-  // fetch('https://codingapple1.github.io/hello.txt')
-  //   .then((response) => {
-  //     console.log('text->', response);
-  //     return response.text();
-  //   })
-  //   .then((data) => {
-  //     console.log('data', data);
-  //   })
-  //   .then(() => {
-  //     fetch('https://codingapple1.github.io/hello2.txt')
-  //       .then((response) => {
-  //         return response.text();
-  //       })
-  //       .then((data) => {
-  //         console.log('data2', data);
-  //       });
-  //   })
-  //   .catch(function () {
-  //     console.log('fetch 실패');
-  //   });
-
-async function plus(){
-  let promise = new Promise(function(succ,fail){
-   let butEvent = document.querySelector('#but');
-   butEvent.addEventListener('click',function(){
-    succ();
-   })
-  });
-
-try {
-  let res = await promise;
-  console.log('성공했어요')
-} catch (error) {
-  console.log('프로미스 연산이 잘안되었군요')
-}
-}
-
-plus();
-
-    // plus().then(function(res){
-    //     console.log(res)
-    // })
-
-
-
-
+  for (let key of arr) {
+    for (let i = 1; i <= 10; i++) {
+      console.log(key * i);
+    }
+  }
 </script>
