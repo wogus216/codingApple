@@ -35,7 +35,7 @@ function play() {
   requestAnimationFrame(play);
   timer++;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  if (timer % 120 === 0) {
+  if (timer % 60 === 0) {
     let cactus = new Cactus();
     reds.push(cactus);
   }
