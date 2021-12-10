@@ -7,12 +7,15 @@ function App() {
   let posts = '강남 고기 맛집';
   //title 안에 저장 되어 있다.
   let [title, setTitle] = useState(['male court', 'udon', 'hambuger']);
-  let [num, setNum] = useState(0);
-
+  let [thumb, setThumb] = useState([0, 0, 0]);
+  let [numPush, setNumPush] = useState(0);
   let [modal, setModal] = useState(false);
-  function plus() {
-    setNum(num + 1);
+  function plus(num) {
+    let newThumb = [...thumb];
+    newThumb[num] += 1;
+    setThumb(newThumb);
   }
+  console.log('thumb', thumb[0]);
   function reverse() {
     setModal(!modal);
   }
@@ -30,25 +33,54 @@ function App() {
       >
         button
       </button>
-      <div className="list">
-        <h3>
-          {title[0]} <span onClick={plus}>👍</span> {num}
-        </h3>
-        <p>2월17일 발행</p>
-        <hr />
-      </div>
-      <div className="list">
-        <h3>{title[1]}</h3>
-        <p>2월17일 발행</p>
-        <hr />
-      </div>
-      <div className="list">
-        <h3 onClick={reverse}>{title[2]}</h3>
-        <p>2월17일 발행</p>
-        <hr />
-      </div>
+      {title.map((data, idx) => {
+        return (
+          <div className="list">
+            <h3
+              onClick={() => {
+                reverse();
+                setNumPush(idx);
+              }}
+              key={idx}
+            >
+              {data}{' '}
+              <span
+                onClick={() => {
+                  plus(idx);
+                }}
+              >
+                👍
+              </span>{' '}
+              {thumb[idx]}
+            </h3>
 
-      {modal === true ? <Modal /> : null}
+            <p>2월17일 발행</p>
+            <hr />
+          </div>
+        );
+      })}
+      <button
+        onClick={() => {
+          setNumPush(0);
+        }}
+      >
+        버튼1
+      </button>
+      <button
+        onClick={() => {
+          setNumPush(1);
+        }}
+      >
+        버튼2
+      </button>
+      <button
+        onClick={() => {
+          setNumPush(2);
+        }}
+      >
+        버튼2
+      </button>
+      {modal === true ? <Modal title={title} numPush={numPush} /> : null}
     </div>
   );
 }
@@ -64,11 +96,11 @@ function App() {
 //   </div>
 //   )
 // }
-function Modal() {
+function Modal(props) {
   return (
     <div>
       <div classNmme="modal">
-        <h2>제목</h2>
+        <h2>제목: {props.title[props.numPush]}</h2>
         <p>날짜</p>
         <p>상세내용</p>
       </div>
