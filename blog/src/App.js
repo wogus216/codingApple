@@ -81,6 +81,7 @@ function App() {
         버튼2
       </button>
       {modal === true ? <Modal title={title} numPush={numPush} /> : null}
+      <Profile></Profile>
     </div>
   );
 }
@@ -96,6 +97,26 @@ function App() {
 //   </div>
 //   )
 // }
+class Profile extends React.Component {
+  constructor() {
+    super();
+    this.state = { name: 'Kim', age: 30 };
+  }
+  changeName = () => {
+    this.setState({ name: 'Park' });
+  };
+
+  render() {
+    return (
+      <div>
+        <h3>프로필입니다</h3>
+        <p>저는 {this.state.name}</p>
+        <button onClick={this.changeName}>버튼</button>
+      </div>
+    );
+  }
+}
+
 function Modal(props) {
   return (
     <div>
