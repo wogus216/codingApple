@@ -1,114 +1,132 @@
 /* eslint-disable */
+
 import React, { useState } from 'react';
 import './App.css';
-import logo from './logo.svg';
 
 function App() {
-  let [state, setState] = useState([
-    '남자코트 추천',
-    '마포추천맛집',
-    '강남 우동 맛집',
-  ]);
-  let [num, setNum] = useState([0, 1, 2]);
+  let posts = '강남 고기 맛집';
+  //title 안에 저장 되어 있다.
+  let [title, setTitle] = useState(['male court', 'udon', 'hambuger']);
+  let [thumb, setThumb] = useState([0, 0, 0]);
+  let [numPush, setNumPush] = useState(0);
   let [modal, setModal] = useState(false);
-  let [push, setPush] = useState(0);
-  let [input, setInput] = useState('');
-  let posts = '마포 고기 맛집';
-
-  function change() {
-    let newState = [...state];
-    newState[0] = '여자추천맛집';
-    setState(newState);
+  function plus(num) {
+    let newThumb = [...thumb];
+    newThumb[num] += 1;
+    setThumb(newThumb);
   }
-
-  function save() {
-    let addState = [...state, input];
-    let addNum = [...num, 0];
-    setNum(addNum);
-    setState(addState);
+  console.log('thumb', thumb[0]);
+  function reverse() {
+    setModal(!modal);
   }
-
-  function Modal(props) {
-    console.log(props.state);
-    console.log(props.push);
-    return (
-      <div className="modal">
-        <h2>{props.state[props.push]}</h2>
-        <p>날짜</p>
-        <p>상세내용</p>
-      </div>
-    );
-  }
-
   return (
     <div className="App">
       <div className="black-nav">
-        <div className={posts}>개발Blog</div>
+        <div>개발 Blog</div>
       </div>
-      <button onClick={change}>제목 바꾸기</button>
-      {state.map((a, i) => {
+      <button
+        onClick={() => {
+          let newTitle = [...title];
+          newTitle[0] = 'femail court';
+          setTitle(newTitle);
+        }}
+      >
+        button
+      </button>
+      {title.map((data, idx) => {
         return (
-          <div className="list" key={i}>
-            <h4
+          <div className="list">
+            <h3
               onClick={() => {
-                setPush(i);
+                reverse();
+                setNumPush(idx);
               }}
+              key={idx}
             >
-              {state[i]}
+              {data}{' '}
               <span
                 onClick={() => {
-                  let newNum = [...num];
-                  newNum[i]++;
-                  setNum(newNum);
+                  plus(idx);
                 }}
               >
                 👍
               </span>{' '}
-              {num[i]}{' '}
-            </h4>
+              {thumb[idx]}
+            </h3>
+
             <p>2월17일 발행</p>
-            <hr></hr>
+            <hr />
           </div>
         );
       })}
-      {/* <button
+      <button
         onClick={() => {
-          setPush(0);
+          setNumPush(0);
         }}
       >
         버튼1
       </button>
       <button
         onClick={() => {
-          setPush(1);
+          setNumPush(1);
         }}
       >
         버튼2
       </button>
       <button
         onClick={() => {
-          setPush(2);
+          setNumPush(2);
         }}
       >
-        버튼3
-      </button> */}
-      {input}
-      <input
-        onChange={(e) => {
-          setInput(e.target.value);
-        }}
-      />
-      <button onClick={save}>저장</button>
-      <button
-        onClick={() => {
-          setModal(!modal);
-        }}
-      >
-        모달 버튼
+        버튼2
       </button>
-
-      {modal === true ? <Modal state={state} push={push} /> : null}
+      {modal === true ? <Modal title={title} numPush={numPush} /> : null}
+      <Profile></Profile>
     </div>
   );
 }
+//컴포넌트 만들 때 1.이름 대문자 2.소괄호 안에 담기
+//만드는 기준 반복적으로 출연하는 친구들
+
+// function Title(){
+//   return(
+//     <div className="list">
+//     <h3>{title[2]}</h3>
+//     <p>2월17일 발행</p>
+//     <hr />
+//   </div>
+//   )
+// }
+class Profile extends React.Component {
+  constructor() {
+    super();
+    this.state = { name: 'Kim', age: 30 };
+  }
+  changeName = () => {
+    this.setState({ name: 'Park' });
+  };
+
+  render() {
+    return (
+      <div>
+        <h3>프로필입니다</h3>
+        <p>저는 {this.state.name}</p>
+        <button onClick={this.changeName}>버튼</button>
+      </div>
+    );
+  }
+}
+
+function Modal(props) {
+  return (
+    <div>
+      <div classNmme="modal">
+        <h2>제목: {props.title[props.numPush]}</h2>
+        <p>날짜</p>
+        <p>상세내용</p>
+      </div>
+    </div>
+  );
+}
+
 export default App;
