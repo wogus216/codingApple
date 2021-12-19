@@ -58,15 +58,91 @@ try {
 } catch (error) {
   console.log('프로미스 연산이 잘안되었군요')
 }
+
+
 }
 
 plus();
 
-    // plus().then(function(res){
-    //     console.log(res)
-    // })
+// function func(a,b,...rest){
+//   console.log(a)
+//   console.log(b)
+//   console.log(...rest)
+// }
+
+// func(1,2,3)
 
 
+let a = [1,2,3]
+let b = ['you','are']
+let c = function(a,b){
+  console.log('원본',[[...a],...[...b]])
+  console.log([[...a], [...b][1]])
+}
+c(a,b)
+
+function func(a = 5, b = a *2){
+  console.log(a + b)
+  return 10
+
+}
+
+func(3)
 
 
+function array(...rest){
+console.log(rest)
+}
+
+let newArray = array(1,2,3,4,5)
+console.log(newArray)
+
+function Sort(a){
+  console.log([...a].sort())
+}
+
+function textCnt(a){
+  let cnt = 0;
+  let cnt1 = 0;
+  let cnt2 = 0;
+ if([...a].map(a=> a === 'a'? cnt++ : null))
+ 
+ if([...a].map(a=> a === 'b'? cnt1++ : null))
+ 
+ if([...a].map(a => a ==='c'? cnt2++ : null)){
+
+ }
+console.log({
+  a: cnt,
+  b: cnt1,
+  c: cnt2
+})
+}
+
+textCnt('aacbbb')
+
+Sort('bear')
+
+function 글자세기(글){
+
+var 결과 = {};
+  [...글].forEach(function(a){
+     if( 결과[a] > 0 ){ 결과[a]++ } else { 결과[a] = 1 } 
+     console.log(결과[a])
+  }); 
+
+}
+글자세기('aacbbbb')
+
+let obj ={
+  a : 1,
+  b : 2
+}
+
+console.log('obj[a]',obj[a])
+
+let res = {};
+res['c'] = 1;
+
+console.log(res)
 </script>
