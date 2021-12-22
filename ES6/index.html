@@ -1,162 +1,58 @@
-<<<<<<< HEAD
-<script></script>
-<img id="test" src="https://codingapple1.github.io/kona.jpg" />
-<button id="but">버튼</button>
+
+
 <script>
-  //성공 실패 판정 기계
-  // let promise = new Promise(function (resolve, reject) {
-  //   let img = document.querySelector('#test');
+//  let stu1 = {
+//    name: 'Kim', 
+//    age: 15,
+//   sayHi: function(){
+//    console.log('안녕하세요'+this.name+ '입니다.') 
+//   }
+//   }
 
-  //   img.addEventListener('load', function () {
-  //     resolve();
-  //   });
-
-  //   img.addEventListener('error', function () {
-  //     reject();
-  //   });
-  // });
-
-  // promise
-  //   .then(function () {
-  //     console.log('success');
-  //   })
-  //   .catch(function () {
-  //     conosole.log('fail');
-  //   });
-
-  // fetch('https://codingapple1.github.io/hello.txt')
-  //   .then((response) => {
-  //     console.log('text->', response);
-  //     return response.text();
-  //   })
-  //   .then((data) => {
-  //     console.log('data', data);
-  //   })
-  //   .then(() => {
-  //     fetch('https://codingapple1.github.io/hello2.txt')
-  //       .then((response) => {
-  //         return response.text();
-  //       })
-  //       .then((data) => {
-  //         console.log('data2', data);
-  //       });
-  //   })
-  //   .catch(function () {
-  //     console.log('fetch 실패');
-  //   });
-
-async function plus(){
-  let promise = new Promise(function(succ,fail){
-   let butEvent = document.querySelector('#but');
-   butEvent.addEventListener('click',function(){
-    succ();
-   })
-  });
-
-try {
-  let res = await promise;
-  console.log('성공했어요')
-} catch (error) {
-  console.log('프로미스 연산이 잘안되었군요')
+//constructor 는 대문자로
+function Student(name,age){
+  //인스턴스 새로 생성되는  오브젝트
+  this.name = name,
+  this.age = age,
+this.sayHi = function(){
+  console.log('안녕하세요'+ this.name+ '입니다.')
+}
 }
 
+Student.prototype.gender = '남';
 
+
+let stu1 = new Student('손흥민',29);
+let stu2 = new Student('권재현',28);
+
+stu1.sayHi('손흥민',29);
+stu2.sayHi('권재현',28);
+
+// let arr = [1,2,3];
+let arr = new Array(1,2,3);
+let obj = {
+  name: 'Kim'
 }
+arr.push(4);
 
-plus();
+let par = { name : 'Kim'};
+let child = {};
 
-// function func(a,b,...rest){
-//   console.log(a)
-//   console.log(b)
-//   console.log(...rest)
+child.__proto__= par;
+
+
+
+// function Product(name,price){
+//   this.name = name,
+//   this.price = price,
+//   this.tax = function(){
+//     console.log(this.price * 0.1)
+//   }
 // }
 
-// func(1,2,3)
+// let pro1 = new Product('shirts',50000);
+// let pro2 = new Product('pants',60000);
 
-
-let a = [1,2,3]
-let b = ['you','are']
-let c = function(a,b){
-  console.log('원본',[[...a],...[...b]])
-  console.log([[...a], [...b][1]])
-}
-c(a,b)
-
-function func(a = 5, b = a *2){
-  console.log(a + b)
-  return 10
-
-}
-
-func(3)
-
-
-function array(...rest){
-console.log(rest)
-}
-
-let newArray = array(1,2,3,4,5)
-console.log(newArray)
-
-function Sort(a){
-  console.log([...a].sort())
-}
-
-function textCnt(a){
-  let cnt = 0;
-  let cnt1 = 0;
-  let cnt2 = 0;
- if([...a].map(a=> a === 'a'? cnt++ : null))
- 
- if([...a].map(a=> a === 'b'? cnt1++ : null))
- 
- if([...a].map(a => a ==='c'? cnt2++ : null)){
-
- }
-console.log({
-  a: cnt,
-  b: cnt1,
-  c: cnt2
-})
-}
-
-textCnt('aacbbb')
-
-Sort('bear')
-
-function 글자세기(글){
-
-var 결과 = {};
-  [...글].forEach(function(a){
-     if( 결과[a] > 0 ){ 결과[a]++ } else { 결과[a] = 1 } 
-     console.log(결과[a])
-  }); 
-
-}
-글자세기('aacbbbb')
-
-let obj ={
-  a : 1,
-  b : 2
-}
-
-console.log('obj[a]',obj[a])
-
-let res = {};
-res['c'] = 1;
-
-console.log(res)
+// pro1.tax();
+// pro2.tax();
 </script>
-=======
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Document</title>
-  </head>
-  <body>
-    <canvas id="canvas"> </canvas>
-    <script src="main.js"></script>
-  </body>
-</html>
->>>>>>> 6b84015cffaf3bbf387b01759910faffa3df1434
