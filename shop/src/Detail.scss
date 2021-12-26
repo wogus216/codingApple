@@ -18,6 +18,7 @@ $mainColor: #ff0000;
 .red {
   color: $mainColor;
 }
+//css 함수
 @mixin fun() {
   background: #eeeeee;
   padding: 15px;

@@ -1,100 +1,58 @@
-import React, { useState } from 'react';
-import { Table, Alert } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import data from './data';
+import axios from 'axios';
+import React from 'react';
+import { Table } from 'react-bootstrap';
+import { connect } from 'react-redux';
 function Cart(props) {
-  let state = useSelector((state) => state);
-  console.log('state', state);
-  let dispatch = useDispatch();
-  const [see, setSee] = useState(false);
-  let style = { color: 'red' };
   return (
     <div>
-      <Table>
+      <Table responsive>
         <thead>
-          <tr style={style}>
+          <tr>
             <th>#</th>
             <th>상품명</th>
             <th>수량</th>
             <th>변경</th>
-            <th>사이즈</th>
-            <th>제거</th>
           </tr>
         </thead>
         <tbody>
-          {state.reducer.map((a, i) => {
+          {props.state.map((data, idx) => {
             return (
-              <tr key={i}>
-                <td>{a.id}</td>
-                <td>{a.name}</td>
-                <td>{a.quan}</td>
+              <tr key={idx}>
+                <td>{data.id}</td>
+                <td>{data.name}</td>
+                <td>{data.quan}</td>
                 <td>
                   <button
                     onClick={() => {
-                      dispatch({
-                        type: '수량증가',
-                        data: a.id,
-                      });
+                      props.dispatch({ type: 'add' });
                     }}
                   >
                     +
                   </button>
+                </td>
+                <td>
                   <button
                     onClick={() => {
-                      dispatch({ type: '수량감소', data: a.id });
+                      props.dispatch({ type: 'minus' });
                     }}
                   >
                     -
                   </button>
-                </td>
-                <td>{a.size}</td>
-                <td
-                  onMouseEnter={() => {
-                    console.log('되는 겨?');
-                    setSee(true);
-                  }}
-                >
-                  {see === true ? (
-                    <img
-                      src="https://cdn-icons-png.flaticon.com/512/1345/1345823.png"
-                      alt="garbage"
-                      width="50px"
-                      onMouseOut={() => {
-                        setSee(false);
-                      }}
-                      onClick={() => {
-                        dispatch({ type: '항목제거', data: a.id });
-                      }}
-                    ></img>
-                  ) : null}
                 </td>
               </tr>
             );
           })}
         </tbody>
       </Table>
-      {props.alertOpen === true ? (
-        <Alert variant="success">
-          지금 구매시 20% 할인
-          <button
-            onClick={() => {
-              props.dispatch({ type: '닫기' });
-            }}
-          >
-            닫기
-          </button>
-        </Alert>
-      ) : null}
     </div>
   );
 }
 
-// function name(state) {
-//   return {
-//     state: state.reducer,
-//     alertOpen: state.reducer2,
-//   };
-// }
+function func(state) {
+  return {
+    state: state,
+  };
+}
 
-// export default connect(name)(Cart);
-export default Cart;
+export default connect(func)(Cart);
+// export default Cart;

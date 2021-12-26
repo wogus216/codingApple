@@ -19,6 +19,17 @@ let Title = styled.h4`
   color: ${(props) => props.color};
 `;
 
+// class Detail2 extends React.Component {
+//   //컴포넌트 등장할때
+//   componentDidMount(){
+
+//   }
+// //컴포넌트 사라질 때
+//   componentWillUnmount(){
+
+//   }
+// }
+
 const options = [
   { value: 250, label: '250' },
   { value: 270, label: '270' },
@@ -34,14 +45,15 @@ function Detail(props) {
   const [size, setSize] = useState(0);
 
   useEffect(() => {
-    console.log('실행 중');
+    console.log('바로 실행 중');
     let timer = setTimeout(() => {
       setState(false);
     }, 2000);
+    //리턴은 컴포넌트가 사라질 때 코드 실행시 킬 수 있음
     return () => {
       clearTimeout(timer);
     };
-  }, []);
+  }, [state]);
   let history = useHistory(); // 방문기록을 저장해 놓는 object
   let { id } = useParams();
   let findShoes = props.shoes.find((shoes) => {
@@ -90,7 +102,7 @@ function Detail(props) {
             <p>{findShoes.price}</p>
             {/* <p>재고:{props.stock[id]}</p>
              */}
-            <Info i={id} />
+            <Info id={id} />
             <button
               className="btn btn-danger"
               onClick={() => {
@@ -111,23 +123,7 @@ function Detail(props) {
             >
               주문하기
             </button>
-            {/* {order}
-            <input
-              type="number"
-              onChange={(e) => {
-                setOrder(e.target.value);
-                console.log(order);
-              }}
-            />
-            &nbsp;
-            <Select
-              onChange={(e) => {
-                console.log('ee', e.value);
-                setSize(e.value);
-              }}
-              options={options}
-              placeholder={'사이즈를 선택하시오'}
-            /> */}
+
             <button
               className="btn btn-primary"
               onClick={() => {
@@ -186,7 +182,7 @@ function TabContent(props) {
 
 function Info(props) {
   let stock = useContext(stockContext);
-  return <p>재고: {stock[props.i]}</p>;
+  return <p>재고: {stock[props.id]}</p>;
 }
 
 function Alert() {

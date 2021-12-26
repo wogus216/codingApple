@@ -40,7 +40,7 @@ export default function Main(props) {
               .get('https://codingapple1.github.io/shop/data2.json')
               .then((result) => {
                 setLoad(false);
-                console.log(result.data);
+                console.log('result.data', result.data);
                 let addShoes = [...shoes, ...result.data];
                 props.setShoes(addShoes);
               })

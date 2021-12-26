@@ -7,70 +7,30 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
+import { colors } from 'react-select/dist/declarations/src/theme';
 
 let alert = true;
 
-function reducer2(state = alert, action) {
-  if (action.type === '닫기') {
-    state = false;
-  } else {
-    return state;
-  }
-}
-
-let first = [
-  { id: 0, name: 'nike', quan: 2, 사이즈: 250 },
+let firstValue = [
   { id: 1, name: 'adidas', quan: 1, 사이즈: 260 },
+  { id: 0, name: 'nike', quan: 2, 사이즈: 250 },
 ];
+//reducer는 무조건 state를 리턴 해야한다.
+function reducer(state = firstValue, action) {
+  let copy = [...state];
 
-function reducer(state = first, action) {
-  //항목제거
-  if (action.type === '항목제거') {
-    console.log(action.data);
-    let copy = [...state];
-    copy = copy.filter((a) => a.id !== action.data);
+  if (action.type === 'add') {
+    copy[firstValue.id].quan++;
     return copy;
-  }
-
-  if (action.type === '항목추가') {
-    let copy = [...state];
-    let found = state.findIndex((a) => {
-      console.log('a.id', a.id);
-      return a.id === action.payload.id;
-    });
-
-    console.log('found', found);
-    console.log('action.quan', action.payload.quan);
-
-    if (found >= 0) {
-      copy[found].quan++;
-      console.log('중복증가 ', copy);
-      return copy;
-    } else {
-      console.log('action', action);
-      copy.push(action.payload);
-      console.log('항목추가 ', copy);
-      return copy;
-    }
-  }
-  //수량 증가
-  if (action.type === '수량증가') {
-    let copy = [...state];
-    console.log('action.payload.quan', action.payload.quan);
-    copy[action.data].quan++;
-    return copy;
-  } else if (action.type === '수량감소') {
-    let copy = [...state];
-    if (copy[action.data].quan > 0) {
-      copy[action.data].quan--;
-    }
+  } else if (action.type === 'minus') {
+    copy[state.id].quan--;
     return copy;
   } else {
     return state;
   }
 }
 
-let store = createStore(combineReducers({ reducer, reducer2 }));
+let store = createStore(reducer);
 
 ReactDOM.render(
   <React.StrictMode>

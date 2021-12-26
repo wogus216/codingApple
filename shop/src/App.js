@@ -17,6 +17,7 @@ export let stockContext = React.createContext();
 
 function App() {
   let [shoes, setShoes] = useState(Data);
+  console.log('shoes', shoes);
   let [stock, setStock] = useState([10, 11, 12]);
   const [count, setCount] = useState(0);
   const [age, setAge] = useState(20);

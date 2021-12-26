@@ -1,58 +1,161 @@
-
-
 <script>
-//  let stu1 = {
-//    name: 'Kim', 
-//    age: 15,
-//   sayHi: function(){
-//    console.log('안녕하세요'+this.name+ '입니다.') 
-//   }
-//   }
+  //  let stu1 = {
+  //    name: 'Kim',
+  //    age: 15,
+  //   sayHi: function(){
+  //    console.log('안녕하세요'+this.name+ '입니다.')
+  //   }
+  //   }
 
-//constructor 는 대문자로
-function Student(name,age){
-  //인스턴스 새로 생성되는  오브젝트
-  this.name = name,
-  this.age = age,
-this.sayHi = function(){
-  console.log('안녕하세요'+ this.name+ '입니다.')
-}
-}
+  //constructor 는 대문자로
+  // function Student(name,age){
+  //   //인스턴스 새로 생성되는  오브젝트
+  //   this.name = name,
+  //   this.age = age,
+  // this.sayHi = function(){
+  //   console.log('안녕하세요'+ this.name+ '입니다.')
+  // }
+  // }
 
-Student.prototype.gender = '남';
+  // Student.prototype.gender = '남';
 
+  // let stu1 = new Student('손흥민',29);
+  // let stu2 = new Student('권재현',28);
 
-let stu1 = new Student('손흥민',29);
-let stu2 = new Student('권재현',28);
+  // stu1.sayHi('손흥민',29);
+  // stu2.sayHi('권재현',28);
 
-stu1.sayHi('손흥민',29);
-stu2.sayHi('권재현',28);
+  // // let arr = [1,2,3];
+  // let arr = new Array(1,2,3);
+  // let obj = {
+  //   name: 'Kim'
+  // }
+  // arr.push(4);
 
-// let arr = [1,2,3];
-let arr = new Array(1,2,3);
-let obj = {
-  name: 'Kim'
-}
-arr.push(4);
+  // let par = { name : 'Kim'};
+  // let child = {};
 
-let par = { name : 'Kim'};
-let child = {};
+  // child.__proto__= par;
 
-child.__proto__= par;
+  // function Product(name,price){
+  //   this.name = name,
+  //   this.price = price,
+  //   this.tax = function(){
+  //     console.log(this.price * 0.1)
+  //   }
+  // }
 
+  // let pro1 = new Product('shirts',50000);
+  // let pro2 = new Product('pants',60000);
 
+  // pro1.tax();
+  // pro2.tax();
 
-// function Product(name,price){
-//   this.name = name,
-//   this.price = price,
-//   this.tax = function(){
-//     console.log(this.price * 0.1)
-//   }
-// }
+  // class par {
+  //   constructor(param) {
+  //     this.name = param;
+  //     // this.sayHi = function(){
+  //     //   console.log('hello');
+  //     // }
+  //   }
+  //   sayHi() {
+  //     console.log('hello');
+  //   }
+  // }
 
-// let pro1 = new Product('shirts',50000);
-// let pro2 = new Product('pants',60000);
+  // let char = new par('dafadfs');
 
-// pro1.tax();
-// pro2.tax();
+  // class grandfar {
+  //   constructor(name) {
+  //     this.last = 'Kim';
+  //     this.name = name;
+  //   }
+  //   sayHi() {
+  //     console.log('안녕 저는 할아버지에요');
+  //   }
+  // }
+
+  // let grandfar1 = new grandfar('만덕');
+  // class father extends grandfar {
+  //   constructor(name) {
+  //     //super는 물려받는 class 의 constructor라는 뜻
+  //     super(name);
+  //     this.age = 50;
+  //   }
+  //   sayHi() {
+  //     console.log('안녕 저는 아버지에요');
+  //     super.sayHi();
+  //   }
+  // }
+
+  // let father1 = new father('sancho');
+
+  // let human = {
+  //   name: 'Park',
+  //   age: 30,
+  //   //getter return 필수
+  //   get nextAge() {
+  //     return this.age + 1;
+  //   },
+
+  //   // setter 파라미터 1개 이상 필수
+  //   set setAge(age) {
+  //     this.age = Number(age);
+  //   },
+  // };
+
+  // human.setAge = '20';
+  class human {
+    constructor() {
+      (this.name = 'Park'), (this.age = 20);
+    }
+    get nextAge() {
+      return this.age + 1;
+    }
+    set setAge(age) {
+      this.age = age;
+    }
+  }
+
+  let human1 = new human();
+
+  class dog {
+    constructor(type, color) {
+      this.type = type;
+      this.color = color;
+    }
+  }
+
+  let dog1 = new dog('말티즈', 'white');
+  let dog2 = new dog('진돗개', 'brown');
+
+  console.log(dog1);
+  console.log(dog2);
+
+  class cat extends dog {
+    constructor(type, color, age) {
+      super(type, color);
+      this.age = age;
+    }
+    nextAge() {
+      return this.age + 1;
+    }
+  }
+
+  let cat1 = new cat('코숏', 'white', 5);
+  console.log(cat1.nextAge());
+  // console.log(dog1.nextAge());
+
+  class ability {
+    constructor() {
+      this.attack = 5;
+      this.stamina = 100;
+    }
+    battlePoint() {
+      return this.attack + this.stamina;
+    }
+    setHeal(num) {
+      this.stamina += num;
+    }
+  }
 </script>
