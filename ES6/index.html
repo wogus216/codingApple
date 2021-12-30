@@ -105,57 +105,81 @@
   // };
 
   // human.setAge = '20';
-  class human {
-    constructor() {
-      (this.name = 'Park'), (this.age = 20);
-    }
-    get nextAge() {
-      return this.age + 1;
-    }
-    set setAge(age) {
-      this.age = age;
-    }
-  }
+  // class human {
+  //   constructor() {
+  //     (this.name = 'Park'), (this.age = 20);
+  //   }
+  //   get nextAge() {
+  //     return this.age + 1;
+  //   }
+  //   set setAge(age) {
+  //     this.age = age;
+  //   }
+  // }
 
-  let human1 = new human();
+  // let human1 = new human();
 
-  class dog {
-    constructor(type, color) {
-      this.type = type;
-      this.color = color;
-    }
-  }
+  // class dog {
+  //   constructor(type, color) {
+  //     this.type = type;
+  //     this.color = color;
+  //   }
+  // }
 
-  let dog1 = new dog('말티즈', 'white');
-  let dog2 = new dog('진돗개', 'brown');
+  // let dog1 = new dog('말티즈', 'white');
+  // let dog2 = new dog('진돗개', 'brown');
 
-  console.log(dog1);
-  console.log(dog2);
+  // console.log(dog1);
+  // console.log(dog2);
 
-  class cat extends dog {
-    constructor(type, color, age) {
-      super(type, color);
-      this.age = age;
-    }
-    nextAge() {
-      return this.age + 1;
-    }
-  }
+  // class cat extends dog {
+  //   constructor(type, color, age) {
+  //     super(type, color);
+  //     this.age = age;
+  //   }
+  //   nextAge() {
+  //     return this.age + 1;
+  //   }
+  // }
 
-  let cat1 = new cat('코숏', 'white', 5);
-  console.log(cat1.nextAge());
-  // console.log(dog1.nextAge());
+  // let cat1 = new cat('코숏', 'white', 5);
+  // console.log(cat1.nextAge());
+  // // console.log(dog1.nextAge());
 
-  class ability {
-    constructor() {
-      this.attack = 5;
-      this.stamina = 100;
-    }
-    battlePoint() {
-      return this.attack + this.stamina;
-    }
-    setHeal(num) {
-      this.stamina += num;
-    }
-  }
+  // class ability {
+  //   constructor() {
+  //     this.attack = 5;
+  //     this.stamina = 100;
+  //   }
+  //   battlePoint() {
+  //     return this.attack + this.stamina;
+  //   }
+  //   setHeal(num) {
+  //     this.stamina += num;
+  //   }
+  // }
+
+  // let data = {
+  //   odd: [],
+  //   even: [],
+  //   setNum(...rest) {
+  //     for (let i of rest) {
+  //       if (i % 2 === 0) {
+  //         this.even.push(i);
+  //       } else {
+  //         this.odd.push(i);
+  //       }
+  //     }
+  //   },
+  //   getNum() {
+  //     let res = [...this.odd, ...this.even];
+  //     return res.sort((a, b) => a - b);
+  //   },
+  // };
+  // data.setNum(1, 2, 3, 4);
+  // console.log(data.getNum());
+</script>
+<script type="module">
+  import * as nick from './library.js';
+  console.log(nick.a);
 </script>
