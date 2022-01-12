@@ -1,100 +1,109 @@
-.container{
-    width: 800px;
-    height: 200px;
-    border: 2px solid black;
-
+div {
+  box-sizing: border-box;
 }
 
-.left{
-    width: 80%;
-    height: 100%;
-    background-color: aquamarine;
-    float: left;
+body {
+  margin: 0px;
 }
 
-.left-header{
-    clear: both;
-    height: 20%;
-    
+.container {
+  width: 800px;
+  height: 200px;
+  border: 2px solid black;
 }
 
-img{
-    float: left;
+.left {
+  width: 80%;
+  height: 100%;
+  background-color: aquamarine;
+  float: left;
 }
 
-.left-contents{
-    height: 80%;
-    background-color: brown;
-   
+.left-header {
+  clear: both;
+  height: 20%;
 }
 
-.left-title{
-    float: left;
+img {
+  float: left;
 }
 
-
-
-.right{
-    width: 20%;
-    height: 100%;
-    background-color:bisque;
-    float: left;
+.left-contents {
+  height: 80%;
+  background-color: brown;
 }
 
+.left-title {
+  float: left;
+}
+
+.right {
+  width: 20%;
+  height: 100%;
+  background-color: bisque;
+  float: left;
+}
 
 /* layout2 */
 
-body{
-    margin:0;
+body {
+  margin: 0;
 }
 
-.main-background{
-    width: 100%;
-    height: 500px;
-    background-image: url('https://codingapple.com/wp-content/uploads/2019/06/shoes.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    /* background-attachment: fixed; */
-    padding: 1px;
-    text-align: center;
-    position: relative;
+.main-background {
+  width: 100%;
+  height: 500px;
+  background-image: url('https://codingapple.com/wp-content/uploads/2019/06/shoes.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-attachment: fixed; */
+  padding: 1px;
+  text-align: center;
+  position: relative;
 }
 
-.main-title{
-    color: white;
-    font-size: 40px;
-    margin-top: 20px;
+.main-title {
+  color: white;
+  font-size: 40px;
+  margin-top: 20px;
 }
 
-.main-content{
-    color: white;
-    font-size: 40px;
+.main-content {
+  color: white;
+  font-size: 40px;
 }
 
-.main-button{
-    padding: 15px;
-    font-size:20px;
-    background:white;
-    border:none;
-    border-radius:5px;
-    position: absolute;
-/* 포지션 부여하면 좌표이동가능, 공중에 뜸 */
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 150px;
-        
+.main-button {
+  padding: 15px;
+  font-size: 20px;
+  background: white;
+  border: none;
+  border-radius: 5px;
+  position: absolute;
+  /* 포지션 부여하면 좌표이동가능, 공중에 뜸 */
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 150px;
 }
 
-.main-expl{
-    width: 80%;
-    height: 200px;
-    background-color: grey;
-   position: absolute;
-    top: 390px;
-    left: 0;
-    right: 0;
-    margin: auto;
-   
+.main-expl {
+  width: 80%;
+  max-width: 700px;
+  height: 200px;
+  background-color: #eee;
+  position: relative;
+  top: 150px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 5;
+}
+
+.text-input {
+  padding: 10px;
+  font-size: 20px;
+  border: 2px solid black;
+  border-radius: 5px;
 }
