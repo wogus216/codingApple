@@ -29,10 +29,73 @@
   box-shadow: 5px 5px 10px black;
 }
 
+.table-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 800px;
+  height: 600px;
+  background-color: #eee;
+  padding: 0 30px;
+}
+
 table {
   border-collapse: collapse;
+  background-color: white;
+  width: 90%;
 }
-th,
+th {
+  border-bottom: 1px solid skyblue;
+  width: 100px;
+}
+
 td {
-  border: 1px solid black;
+  width: 45px;
+}
+tbody td:nth-child(2) {
+  text-align: right;
+}
+
+tbody td:nth-child(3),
+tbody td:nth-child(4) {
+  text-align: center;
+}
+
+.buy {
+  padding: 15px;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: coral;
+  color: white;
+  cursor: pointer;
+}
+.buy:hover {
+  background-color: red;
+}
+.input-test:focus {
+  border: 2px solid red;
+}
+
+.custom-link {
+  text-decoration: none;
+}
+
+.custom-link:link {
+  color: aqua;
+}
+
+.main-btn {
+  padding: 15px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.bg-red {
+  background-color: red;
+}
+.bg-blue {
+  background-color: blue;
 }
