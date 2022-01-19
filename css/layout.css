@@ -1,9 +1,37 @@
+@font-face {
+  font-family: 'NanumSquareR';
+  src: url(./font/NanumSquareR.ttf);
+}
+
+
 div {
   box-sizing: border-box;
 }
 
 body {
   margin: 0px;
+  font-family: 'NanumSquareR';
+}
+
+.header-container{
+  display: flex;
+  flex-direction: row;
+  height: 25%;
+  background-color: palevioletred;
+ align-items: center;
+ padding:10px;
+}
+
+.header-items{
+  margin-right: 5px;
+  color:white;
+  font-size: 20px;
+ 
+}
+
+p,h3,span{
+  /* //윈도우에서 글자 선명하게 보인다. */
+  transform: rotate(0.03deg);
 }
 
 .container {
@@ -106,4 +134,24 @@ body {
   font-size: 20px;
   border: 2px solid black;
   border-radius: 5px;
+}
+
+
+.explain-container>div {
+  float : left;
+  width : 25%;
+}
+
+@media screen and (max-width : 992px) {
+  .explain-container>div {
+    float : left;
+    width : 50%;
+  }
+}
+
+@media screen and (max-width : 768px) {
+  .explain-container>div {
+    float : none;
+    width : 100%;
+  }
 }
