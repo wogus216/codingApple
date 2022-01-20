@@ -5,20 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="./layout.css" rel="stylesheet" />
+    <link href="./layout2.css" rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
+    <nav class="header-container">
+      <div class="header-items" style="flex-grow: 2">logo</div>
 
-
-  <nav class="header-container">
-
-    
-      <div class="header-items" style="flex-grow: 2; font-size: 30px;">logo</div>
-      
       <div class="header-items">products</div>
       <div class="header-items">services</div>
-  
-  </nav>
+    </nav>
     <div class="main-background">
       <h4 class="main-title">Buy Our Shoes!</h4>
       <p class="main-content">
@@ -34,42 +37,92 @@
           fsdfsdfsdfsdfsdfsdfasdfsadf
         </p>
       </div>
-      <br />
+
+      <div style="clear: both; float: none"></div>
     </div>
 
-
-    <div class="explain-container">
+    <div class="product-container">
       <div>
-        <h4>제목</h4>
-        <p>내용</p>
+        <i class="fas fa-shopping-cart fa-3x"></i>
+        <h4>Fast Shpping</h4>
+        <p>Iorem ipsum</p>
       </div>
       <div>
-        <h4>제목</h4>
-        <p>내용</p>
+        <i class="fas fa-globe-asia fa-3x"></i>
+        <h4>Fast Shpping</h4>
+        <p>Iorem ipsum</p>
       </div>
       <div>
-        <h4>제목</h4>
-        <p>내용</p>
+        <i class="fas fa-user-alt fa-3x"></i>
+        <h4>Fast Shpping</h4>
+        <p>Iorem ipsum</p>
       </div>
       <div>
-        <h4>제목</h4>
-        <p>내용</p>
+        <i class="fas fa-tshirt fa-3x"></i>
+        <h4>Fast Shpping</h4>
+        <p>Iorem ipsum</p>
       </div>
-      (+ 제목 내용 div 박스 두개 더)
-      <div style="float : none; clear : both"></div>
+      <div style="float: none; clear: both"></div>
     </div>
 
-    <form action="" style="margin-top: 100px">
-      <input type="text" name="age" class="text-input" />
-      <input type="password" name="school" />
-      <input type="email" />
-      <select>
-        <option>adsfdsf</option>
-        <option>fsdfhth</option>
-        <option>adsfdsf</option>
-        <textarea></textarea>
-        <input type="submit" />
-      </select>
-    </form>
+    <div class="shop-bg">
+      <div class="shop-container">
+        <div class="shop-item">
+          <div style="position: relative">
+            <div class="overlay">
+              <div class="item-expl">
+                <h3>$60</h3>
+                <p>인기상품</p>
+              </div>
+            </div>
+            <img
+              src="https://image.vans.co.kr/cmsstatic/product/VN000XG8AZV1_VN000XG8AZV1_primary.jpg?gallery"
+            />
+          </div>
+        </div>
+        <div class="shop-item">
+          <img
+            src="https://image.vans.co.kr/cmsstatic/product/VN000XG8AZV1_VN000XG8AZV1_primary.jpg?gallery"
+          />
+        </div>
+        <div class="shop-item">
+          <img
+            src="https://image.vans.co.kr/cmsstatic/product/VN000XG8AZV1_VN000XG8AZV1_primary.jpg?gallery"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-background">
+      <div class="form-white">
+        <form>
+          <div class="w-100">
+            <h3>Contact Us</h3>
+            <p>Your Email</p>
+            <input class="form-input" type="email" />
+          </div>
+
+          <div class="w-50">
+            <p>First Name</p>
+            <input class="form-input" type="text" />
+          </div>
+          <div class="w-50">
+            <p>Last Name</p>
+            <input class="form-input" type="text" />
+          </div>
+          <div style="clear: both"></div>
+          <div class="w-100">
+            <p>message</p>
+            <textarea class="form-input"> </textarea>
+          </div>
+
+          <div>
+            <input id="sub" type="checkbox" />
+            <label for="sub">Subscribe</label>
+            <button class="yellow-button">SEND</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

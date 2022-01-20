@@ -1,0 +1,194 @@
+/* layout2 */
+
+body {
+  margin: 0;
+}
+
+div,
+input,
+textarea {
+  box-sizing: border-box;
+}
+
+.header-container {
+  display: flex;
+}
+
+.header-items {
+  font-size: 30px;
+  padding: 0 10px;
+}
+
+.main-background {
+  width: 100%;
+  height: 500px;
+  background-image: url('https://codingapple.com/wp-content/uploads/2019/06/shoes.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 1px;
+  text-align: center;
+  position: relative;
+}
+
+.main-title {
+  color: white;
+  font-size: 40px;
+  margin-top: 20px;
+}
+
+.main-content {
+  color: white;
+  font-size: 40px;
+}
+
+.main-button {
+  padding: 15px;
+  font-size: 20px;
+  background: white;
+  border: none;
+  border-radius: 5px;
+  position: absolute;
+  /* 포지션 부여하면 좌표이동가능, 공중에 뜸 */
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 150px;
+}
+
+.main-expl {
+  width: 80%;
+  max-width: 600px;
+  background-color: #eee;
+  position: relative;
+  top: 200px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 5;
+}
+
+.text-input {
+  padding: 10px;
+  font-size: 20px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.product-container {
+  width: 80%;
+  max-width: 1000px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.product-container > div {
+  float: left;
+  width: 25%;
+}
+
+@media screen and (max-width: 992px) {
+  .product-container > div {
+    float: left;
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .product-container > div {
+    float: none;
+    width: 100%;
+  }
+}
+
+.form-background {
+  background-color: black;
+  padding: 30px;
+}
+
+.form-white {
+  background-color: white;
+  padding: 30px;
+  width: 80%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.w-100 {
+  width: 100%;
+  padding: 10px;
+}
+
+.w-50 {
+  width: 50%;
+  float: left;
+  padding: 10px;
+}
+
+.yellow-button {
+  padding: 10px;
+  float: right;
+}
+
+.product-container i {
+  background-color: burlywood;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  padding-top: 25px;
+  box-sizing: border-box;
+  color: white;
+  margin-top: 20px;
+}
+
+.shop-bg {
+  background-color: #eee;
+  padding: 20px;
+}
+
+.shop-container {
+  display: flex;
+  width: 90%;
+  margin: auto;
+}
+.shop-item {
+  width: 33%;
+  padding: 10px;
+}
+
+.shop-item img {
+  width: 100%;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+.item-expl {
+  color: white;
+  font-size: 20px;
+  margin: 10px 0 10px 20px;
+}
+.overlay:hover {
+  opacity: 1;
+}
+
+h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
