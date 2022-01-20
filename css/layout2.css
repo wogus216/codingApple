@@ -1,7 +1,10 @@
 /* layout2 */
 
-body {
+body,
+h3,
+p {
   margin: 0;
+  padding: 0;
 }
 
 div,
@@ -169,10 +172,31 @@ textarea {
   display: block;
 }
 
+.overlay-wrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.overlay-black {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: all 1s ease-in-out;
+  margin-top: 50%;
+}
+
+.overlay-wrap:hover .overlay-black {
+  opacity: 1;
+}
+
 .overlay {
   position: absolute;
   bottom: 0;
   width: 100%;
+  height: 50%;
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
   transition: all 1s ease-in-out;
@@ -181,14 +205,8 @@ textarea {
 .item-expl {
   color: white;
   font-size: 20px;
-  margin: 10px 0 10px 20px;
+  margin: 10px 20px;
 }
 .overlay:hover {
   opacity: 1;
-}
-
-h3 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
