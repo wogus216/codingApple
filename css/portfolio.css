@@ -18,7 +18,7 @@ div {
   width: 100%;
   height: 400px;
   max-height: 40%;
-  background: linear-gradient(#0066ff, #6666ff);
+  background: linear-gradient(to bottom,#0066ff, #6666ff);
 }
 
 .top-ment {
