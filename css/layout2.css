@@ -210,3 +210,7 @@ textarea {
 .overlay:hover {
   opacity: 1;
 }
+
+.custom {
+  color: blue;
+}
