@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.1.6",
     "experss": "^0.0.1-security",
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "mongodb": "^3.6.4"
   }
 }
