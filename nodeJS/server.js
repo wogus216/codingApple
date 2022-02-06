@@ -50,15 +50,29 @@ app.get('/write', (req, res) => {
 })
 
 // 어떤 사람이 /add 경로로 POST요청을 하면...??를 해주세요~
-
 app.post('/add',(req,res)=>{
     console.log('req',req.body)
     res.send('전송완료')
-    // DB에 저장해주세요
-    db.collection('codingApple').insertOne({제목:req.body.title, 내용:req.body.text,날짜:req.body.date}, function(){
-      
-        console.log('저장완료2');
+    // 카운터라는 파일을 찾아 name 중 게시물 갯수라는 찾는다.
+    db.collection('counter').findOne({name: '게시물갯수'},function(err, result){
+console.log('result :',result.totalPost)
+//총 게시물 갯수를 변수에 저장
+let postCnt = result.totalPost
+   // DB에 저장해주세요
+   db.collection('codingApple').insertOne({_id: postCnt+1,제목:req.body.title, 내용:req.body.text,날짜:req.body.date}, function(){
+       console.log('저장완료2');
+    // + counter라는 콜렉션에 있는 totalPost라는 항목도 1 증가 시켜야 됨
+    // set은 변경할 때 사용하는 연산자;
+    // inc는 기존 값에 더해줄 값
+          db.collection('counter').updateOne({name: '게시물갯수'},{ $inc:{totalPost:1}},function(err, result){
+if(err)return console.log(err)
+
+          })
+});
     });
+ 
+
+
 })
 
 
@@ -71,4 +85,8 @@ db.collection('codingApple').find().toArray(function(error,res){
     response.render('list.ejs',{posts: res});
 });
     
+});
+
+app.delete('/delete', function(req,response){
+console.log(response.body)
 })
