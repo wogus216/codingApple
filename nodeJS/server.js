@@ -248,6 +248,9 @@ passport.deserializeUser(function (아이디, done) {
   });
 });
 
+app.use('/shop', require('./routes/shop'));
+app.use('/board/sub', require('./routes/board'));
+
 app.use(function (req, res, next) {
   res.status(404).send('404');
 });
