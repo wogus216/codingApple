@@ -1,15 +1,12 @@
 const express = require('express');
-const path = require('path');
-const app = express();
 
+const app = express();
+const { response } = require('express');
+app.use(express.urlencoded({ extended: true }));
+let db;
+//몽고 DB 연결
+const MongoClient = require('mongodb').MongoClient;
 const http = require('http').createServer(app);
 http.listen(8080, function () {
-  console.log('listening on 8080');
-});
-
-// app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'react-project/build')));
-
-app.get('/', function (req, response) {
-  response.sendFile(path.join(__dirname, 'react-project/build/index.html'));
+  console.log('listening on 3000');
 });
